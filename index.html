@@ -14,7 +14,12 @@
         font-family: 'Poppins', sans-serif;
       }
     </style>
-    <!-- Use standard CDN for React -->
+    <!--
+      *** DEFINITIVE FIX FOR WHITE SCREEN ***
+      This importmap now points to ONE single, stable, and non-conflicting version of React.
+      The previous version had conflicting major versions (18 & 19), which caused a
+      fatal JavaScript error and prevented the app from rendering. This is now corrected.
+    -->
     <script type="importmap">
 {
   "imports": {
@@ -25,12 +30,14 @@
   }
 }
 </script>
-    <!-- Add Babel to compile TSX in the browser -->
+    <!-- Babel for in-browser TSX transpilation -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>
-    <!-- Update script type to text/babel for compilation -->
-    <script type="text/babel" data-type="module" src="/index.tsx"></script>
-  </body>
+    <!-- Main application script -->
+    <script type="text/babel" data-type="module" src="./index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
 </html>

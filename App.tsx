@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Page, Language, TEXTS, ALL_SERVICES, ALL_POSTS, NAV_LINKS, UKFlagIcon, DEFlagIcon } from './constants';
-import type { Service, BlogPost } from './constants';
-import FullLogo from './components/FullLogo';
-import SmallLogo from './components/SmallLogo';
-import { LogoLineDivider } from './components/Dividers';
+import { Page, Language, TEXTS, ALL_SERVICES, ALL_POSTS, NAV_LINKS, UKFlagIcon, DEFlagIcon, Service, BlogPost } from './constants.tsx';
+import FullLogo from './components/FullLogo.tsx';
+import SmallLogo from './components/SmallLogo.tsx';
+import { LogoLineDivider } from './components/Dividers.tsx';
 
 // HELPER COMPONENTS
 
