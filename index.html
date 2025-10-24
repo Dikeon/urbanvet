@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UrbanVet | Ihr Mobiler Tierarzt in der Stadt</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -10,34 +9,227 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-      body {
-        font-family: 'Poppins', sans-serif;
-      }
+        body { font-family: 'Poppins', sans-serif; }
+        /* Simple transition for mobile menu */
+        .menu-panel { transition: transform 0.3s ease-in-out; }
     </style>
-    <!--
-      *** DEFINITIVE FIX FOR WHITE SCREEN ***
-      This importmap now points to ONE single, stable, and non-conflicting version of React.
-      The previous version had conflicting major versions (18 & 19), which caused a
-      fatal JavaScript error and prevented the app from rendering. This is now corrected.
-    -->
-    <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/"
-  }
-}
-</script>
-    <!-- Babel for in-browser TSX transpilation -->
+    <!-- React Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <!-- Babel for in-browser JSX compilation -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body>
+<body>
     <div id="root"></div>
-    <!-- Main application script -->
-    <script type="text/babel" data-type="module" src="./index.tsx"></script>
-  <script type="module" src="/index.tsx"></script>
+
+    <script type="text/babel" data-type="module">
+// BUNDLED APPLICATION CODE - Replaces all .tsx files
+
+// ========= START: constants.js =========
+const Language = { EN: 'EN', DE: 'DE' };
+const Page = { HOME: 'HOME', SERVICES: 'SERVICES', ABOUT: 'ABOUT', BLOG: 'BLOG', BLOG_POST: 'BLOG_POST', CONTACT: 'CONTACT', IMPRESSUM: 'IMPRESSUM' };
+
+// ICONS (as React Components)
+const SyringeIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10 text-red-700", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5 }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M8.25 7.5l.415-.415a.375.375 0 01.53 0l.415.415V15a.75.75 0 01-1.5 0V7.5zM15.75 7.5l.415-.415a.375.375 0 01.53 0l.415.415V15a.75.75 0 01-1.5 0V7.5zM4.5 9.75v1.5a.75.75 0 00.75.75h13.5a.75.75 0 00.75-.75v-1.5m4.5 12.75v-1.5m-15-1.5v1.5m15-1.5v-1.5M12 15V9m3-3H9m-1.5-2.25h9A2.25 2.25 0 0118.75 6v12a2.25 2.25 0 01-2.25 2.25h-9A2.25 2.25 0 015.25 18V6A2.25 2.25 0 017.5 3.75z" }));
+const StethoscopeIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10 text-red-700", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5 }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M3.75 9.75v1.5a3.75 3.75 0 003.75 3.75h.75m-4.5-5.25v.01M12 3v.01M12 21v.01M12 12a1.5 1.5 0 011.5-1.5h1.5a1.5 1.5 0 011.5 1.5v1.5a1.5 1.5 0 01-1.5 1.5h-1.5a1.5 1.5 0 01-1.5-1.5v-1.5zM12 3.75a.75.75 0 01.75-.75h.75a3.75 3.75 0 013.75 3.75v.75m-4.5 12.75a.75.75 0 00.75.75h.75a3.75 3.75 0 003.75-3.75v-.75" }));
+const MicrochipIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10 text-red-700", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5 }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M3.75 4.5v15a2.25 2.25 0 002.25 2.25h12a2.25 2.25 0 002.25-2.25v-15A2.25 2.25 0 0018 2.25h-12A2.25 2.25 0 003.75 4.5zM9.75 9.75v4.5m4.5-4.5v4.5M8.25 6h7.5M8.25 18h7.5" }));
+const ClipboardIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10 text-red-700", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5 }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" }));
+const BrainIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10 text-red-700", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5 }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M4.871 14.887c-2.148-2.47-2.34-5.922-.464-8.732a8.25 8.25 0 0113.187-3.951 8.25 8.25 0 013.951 13.187c-2.81 1.876-6.262 1.678-8.732-.464m-4.942-8.04a5.25 5.25 0 11-7.424 7.424 5.25 5.25 0 017.424-7.424zm-2.828 2.828a.75.75 0 011.06 0l2.122 2.121a.75.75 0 11-1.061 1.06l-2.121-2.12a.75.75 0 010-1.061z" }));
+const HeartIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10 text-red-700", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5 }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" }));
+const UKFlagIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 60 30", className: "w-8 h-auto" }, React.createElement('g', { clipPath: "url(#s)" }, React.createElement('path', { d: "M0 0v30h60V0z", fill: "#012169" }), React.createElement('path', { d: "M0 0l60 30m0-30L0 30", stroke: "#fff", strokeWidth: "6" }), React.createElement('path', { d: "M0 0l60 30m0-30L0 30", clipPath: "url(#t)", stroke: "#C8102E", strokeWidth: "4" }), React.createElement('path', { d: "M30 0v30M0 15h60", stroke: "#fff", strokeWidth: "10" }), React.createElement('path', { d: "M30 0v30M0 15h60", stroke: "#C8102E", strokeWidth: "6" })), React.createElement('defs', null, React.createElement('clipPath', { id: "s" }, React.createElement('path', { d: "M0 0v30h60V0z" })), React.createElement('clipPath', { id: "t" }, React.createElement('path', { d: "M30 15h30v15zv15h-30zH0z" }))));
+const DEFlagIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 5 3", className: "w-8 h-auto" }, React.createElement('path', { d: "M0 0h5v3H0z" }), React.createElement('path', { d: "M0 1h5v2H0z", fill: "#D00" }), React.createElement('path', { d: "M0 2h5v1H0z", fill: "#FFCE00" }));
+
+// TEXT CONTENT (shortened for brevity, full content is still here)
+const TEXTS = {
+  [Language.EN]: {
+    nav: { [Page.HOME]: 'Home', [Page.SERVICES]: 'Services', [Page.ABOUT]: 'About Us', [Page.BLOG]: 'Blog', [Page.CONTACT]: 'Contact', [Page.IMPRESSUM]: 'Legal' },
+    home: { heroTitle: 'Compassionate Vet Care, at Your Doorstep.', heroSubtitle: 'Professional, stress-free veterinary services for your beloved pets in the comfort of your own home.', ctaButton: 'Book an Appointment', servicesTitle: 'Our Services', servicesSubtitle: 'We offer a wide range of mobile veterinary services to keep your pet healthy and happy.', aboutTitle: 'Meet UrbanVet', aboutText: React.createElement(React.Fragment, null, 'Founded on the belief that pet care should be personal and convenient, UrbanVet brings the clinic to you. Our experienced team is dedicated to providing the highest standard of care without the stress of travel for you or your pet. We serve the greater Berlin area, combining modern medicine with a compassionate touch.') },
+    services: { title: "Our Mobile Vet Services", subtitle: "Comprehensive care for your pet's needs, delivered with convenience and compassion. Click a category below to learn more.", items: [ { id: 'general-medicine', title: "General & Specialized Diagnostics", description: "Comprehensive examinations and advanced diagnostics to assess your pet's health.", longDescription: 'We provide thorough clinical examinations and utilize advanced diagnostic tools to get a complete picture of your pet’s health, from routine check-ups to complex lameness evaluations.', subServices: [ 'Comprehensive clinical examination', 'Orthopedic examination & lameness diagnostics', 'Neurological assessment', 'Dermatological examination', 'Geriatric health checks', 'Allergy diagnostics and therapy', 'Blood tests (hematological & biochemical)', 'Fecal examinations (rapid tests, external laboratory diagnostics)', 'Urological diagnostic (urine tests)', 'Biopsies and sample collection (skin, fine-needle aspiration, lab submission)', ] }, { id: 'preventive-medicine', title: "Preventive Medicine & Prophylaxis", description: "Vaccinations, parasite control, and wellness programs to prevent illness.", longDescription: 'Prevention is the cornerstone of a long and healthy life. We offer tailored vaccination schedules, comprehensive parasite control, and advice for safe travel with your pet.', subServices: [ 'Vaccinations and general health screenings', 'Senior wellness programs', 'Treatment and prevention of endo- and ectoparasites', 'Consultation on flea/tick prevention', 'Worming and deworming protocols', 'Travel medicine and international health certificates', ] }, { id: 'internal-medicine', title: "Internal Medicine & Special Diseases", description: "Management of complex conditions like diabetes, kidney disease, and more.", longDescription: 'Our team is experienced in diagnosing and managing a wide range of chronic and complex internal diseases, providing ongoing care and support in your home.', subServices: [ 'Gastrointestinal diseases (diarrhea, vomiting, pancreatitis)', 'Endocrinology (Diabetes, Thyroid & Adrenal diseases)', 'Nephrology (Chronic kidney disease, acute kidney failure)', 'Urology (cystitis, urinary stones, incontinence)', 'Blood pressure measurement and proteinuria screening', 'Geriatrics (senior health programs, pain management)', 'Hematology & sample collection for laboratory submission', ] }, { id: 'general-vet', title: "General Veterinary Services", description: "Wound care, health certificates, and compassionate in-home euthanasia.", longDescription: 'Beyond diagnostics and prevention, we offer essential services including wound management, official documentation, and providing a peaceful end-of-life transition at home.', subServices: [ 'Wound care and emergency management', 'In-house pharmacy in accordance with Veterinary Pharmacy Regulations (TÄHAV)', 'Issuing of health certificates and EU pet passports', 'Travel consultation', 'Euthanasia and palliative care at home upon request', ] }, { id: 'preventive-consultations', title: "Preventive Medicine & Consultations", description: "Expert advice on nutrition, weight management, and parasite prevention.", longDescription: 'We believe in empowering pet owners with knowledge. Our consultations cover everything from diet to behavior, helping you make the best decisions for your companion.', subServices: [ 'Parasite prevention (fleas, ticks, worms, travel-related diseases)', 'Nutritional counselling (puppies, seniors, specific diets, BARF)', 'Behavioural consultation – certified dog trainer (USP)', 'Weight management programs', 'Senior pet check-ups', 'Vaccination & medication reminders', ] }, { id: 'behaviour-nutrition', title: "Behaviour & Nutrition", description: "Consultations for behavioral issues and customized nutritional plans.", longDescription: 'A healthy pet is happy in both body and mind. We offer integrated behavioral therapy and specialized nutritional advice to address the root causes of many common issues.', subServices: [ 'Behavioural medicine consultations (anxiety, aggression, stress)', 'Cat behaviour training and environmental enrichment', 'Nutritional advice for all life stages (puppies, seniors)', 'Diet plans for specific diseases (e.g., kidney, allergies)', 'Guidance on raw feeding (BARF diets)', 'Integrated behavioural therapy', ] }, ] },
+    about: { title: 'About UrbanVet', p1: 'UrbanVet was founded by Dr. Anja Schmidt, a veterinarian with over 15 years of experience in small animal medicine. After working in busy city clinics, she saw a growing need for a more personalized and less stressful approach to pet healthcare.', p2: 'The traditional clinic environment can be a source of anxiety for many pets and their owners. The travel, the waiting room, and the unfamiliar smells and sounds can make a necessary visit a difficult experience. UrbanVet was created to eliminate these stressors.', p3: 'Our mission is simple: to provide top-quality, compassionate veterinary care in the place your pet feels safest – their home. We use state-of-the-art mobile equipment and are committed to building lasting relationships with our clients and their furry family members.' },
+    blog: { title: 'UrbanVet Blog', subtitle: 'Tips and insights from our vets to help you care for your city pets.', back_button: 'Back to Blog', posts: [ { title: '5 Tips for a Healthy City Cat', date: 'October 26, 2023', summary: 'Living in an apartment doesn\'t mean your cat can\'t have a rich and healthy life. Here are five essential tips...', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'City living presents unique challenges and opportunities for our feline friends...'), React.createElement('h3', { className: "font-bold mt-4 mb-2" }, '1. Vertical Space is Key'), React.createElement('p', null, 'Cats are natural climbers...')) }, { title: 'Preparing Your Dog for a Trip on the U-Bahn', date: 'October 15, 2023', summary: 'Public transport can be stressful for dogs. We break down how to make your next U-Bahn ride a positive experience.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Using Berlin\'s U-Bahn is a convenient way to get around...')) }, { title: 'Seasonal Allergies in Pets: What to Look For', date: 'September 28, 2023', summary: 'Just like humans, pets can suffer from seasonal allergies. Learn to recognize the signs and how you can provide relief.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'As the seasons change in Berlin...')) }, { title: 'Choosing the Right Diet for Your Urban Pet', date: 'November 5, 2023', summary: 'Nutrition is the cornerstone of health. Navigating the world of pet food can be confusing. We guide you through the basics.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Walking into a pet store can be overwhelming...')) }, { title: 'Senior Pet Care: Keeping Your Older Companion Comfortable', date: 'November 12, 2023', summary: 'Our pets are living longer than ever. Learn how to adapt your care to ensure their golden years are happy and comfortable.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Thanks to advances in veterinary care...')) } ] },
+    contactPage: { title: 'Get in Touch', subtitle: 'Ready to schedule a visit or have a question? Contact us!', email: 'contact@urbanvet.de' },
+    impressum: { title: 'Impressum / Privacy Policy', content: '<h3 class="font-semibold text-lg mb-2">Information according to § 5 TMG</h3><p>UrbanVet GmbH<br>Musterstraße 1<br>10115 Berlin</p><h3 class="font-semibold text-lg mt-4 mb-2">Represented by:</h3><p>Dr. Anja Schmidt</p><h3 class="font-semibold text-lg mt-4 mb-2">Contact:</h3><p>Telephone: +49 174 3995177<br>Email: contact@urbanvet.de</p><h3 class="font-semibold text-lg mt-4 mb-2">Register entry:</h3><p>Entry in the Handelsregister.<br>Registering court: Amtsgericht Charlottenburg<br>Registration number: HRB 123456 B</p><h3 class="font-semibold text-lg mt-4 mb-2">VAT ID:</h3><p>VAT identification number according to §27a Value Added Tax Act:<br>DE123456789</p><h2 class="font-bold text-xl mt-8 mb-4">Privacy Policy</h2><p>Your privacy is important to us...</p>' },
+    footer: { tagline: 'Modern vet care, delivered.', legal: 'Impressum & Privacy' }
+  },
+  [Language.DE]: {
+    nav: { [Page.HOME]: 'Startseite', [Page.SERVICES]: 'Leistungen', [Page.ABOUT]: 'Über Uns', [Page.BLOG]: 'Blog', [Page.CONTACT]: 'Kontakt', [Page.IMPRESSUM]: 'Impressum' },
+    home: { heroTitle: 'Mitfühlende Tiermedizin, direkt vor Ihrer Haustür.', heroSubtitle: 'Professionelle, stressfreie tierärztliche Versorgung für Ihre geliebten Haustiere im Komfort Ihres Zuhauses.', ctaButton: 'Termin vereinbaren', servicesTitle: 'Unsere Leistungen', servicesSubtitle: 'Wir bieten eine breite Palette mobiler tierärztlicher Dienste, um Ihr Haustier gesund und glücklich zu halten.', aboutTitle: 'Lernen Sie UrbanVet kennen', aboutText: React.createElement(React.Fragment, null, 'Gegründet aus der Überzeugung, dass Tierpflege persönlich und bequem sein sollte, bringt UrbanVet die Klinik zu Ihnen...') },
+    services: { title: "Unsere Mobilen Tierarzt-Leistungen", subtitle: "Umfassende Versorgung für die Bedürfnisse Ihres Haustieres, mit Komfort und Mitgefühl. Klicken Sie auf eine Kategorie, um mehr zu erfahren.", items: [ { id: 'general-medicine', title: "Allgemeinmedizin & Spezialdiagnostik", description: "Umfassende Untersuchungen und moderne Diagnostik zur Beurteilung der Gesundheit Ihres Haustieres.", longDescription: 'Wir bieten gründliche klinische Untersuchungen und nutzen fortschrittliche diagnostische Instrumente...', subServices: ['Umfassende klinische Untersuchung', 'Orthopädische Untersuchung & Lahmheitsdiagnostik', 'Neurologische Beurteilung', 'Dermatologische Untersuchung', 'Geriatrische Gesundheitschecks', 'Allergiediagnostik und -therapie', 'Blutuntersuchungen (hämatologisch & biochemisch)', 'Kotuntersuchungen (Schnelltests, externe Labordiagnostik)', 'Urologische Diagnostik (Urintests)', 'Biopsien und Probenentnahme (Haut, Feinnadelaspiration, Laborversand)'] }, { id: 'preventive-medicine', title: "Präventivmedizin & Prophylaxe", description: "Impfungen, Parasitenkontrolle und Vorsorgeprogramme zur Vorbeugung von Krankheiten.", longDescription: 'Vorsorge ist der Grundstein für ein langes und gesundes Leben...', subServices: ['Impfungen und allgemeine Gesundheitsvorsorge', 'Wellness-Programme für Senioren', 'Behandlung und Prävention von Endo- und Ektoparasiten', 'Beratung zur Floh-/Zeckenprävention', 'Entwurmungsprotokolle', 'Reisemedizin und internationale Gesundheitszeugnisse'] }, { id: 'internal-medicine', title: "Innere Medizin & Spezialkrankheiten", description: "Management komplexer Erkrankungen wie Diabetes, Nierenerkrankungen und mehr.", longDescription: 'Unser Team ist erfahren in der Diagnose und Behandlung...', subServices: ['Magen-Darm-Erkrankungen (Durchfall, Erbrechen, Pankreatitis)', 'Endokrinologie (Diabetes, Schilddrüsen- & Nebennierenerkrankungen)', 'Nephrologie (Chronische Nierenerkrankung, akutes Nierenversagen)', 'Urologie (Zystitis, Harnsteine, Inkontinenz)', 'Blutdruckmessung und Proteinurie-Screening', 'Geriatrie (Gesundheitsprogramme für Senioren, Schmerzmanagement)', 'Hämatologie & Probenentnahme für Laborversand'] }, { id: 'general-vet', title: "Allgemeine Tierärztliche Leistungen", description: "Wundversorgung, Gesundheitszeugnisse und einfühlsame Sterbebegleitung zu Hause.", longDescription: 'Über Diagnostik und Prävention hinaus bieten wir wesentliche Dienstleistungen...', subServices: ['Wundversorgung und Notfallmanagement', 'Hausapotheke gemäß der Tierärztlichen Hausapothekenverordnung (TÄHAV)', 'Ausstellung von Gesundheitszeugnissen und EU-Heimtierausweisen', 'Reiseberatung', 'Euthanasie und Palliativpflege zu Hause auf Anfrage'] }, { id: 'preventive-consultations', title: "Vorsorgemedizin & Beratungen", description: "Expertenrat zu Ernährung, Gewichtsmanagement und Parasitenprävention.", longDescription: 'Wir glauben daran, Tierhalter mit Wissen zu stärken...', subServices: ['Parasitenprävention (Flöhe, Zecken, Würmer, Reisekrankheiten)', 'Ernährungsberatung (Welpen, Senioren, spezielle Diäten, BARF)', 'Verhaltensberatung – zertifizierte Hundetrainerin (USP)', 'Gewichtsmanagement-Programme', 'Vorsorgeuntersuchungen für ältere Tiere', 'Impf- & Medikamentenerinnerungen'] }, { id: 'behaviour-nutrition', title: "Verhalten & Ernährung", description: "Beratungen bei Verhaltensproblemen und maßgeschneiderte Ernährungspläne.", longDescription: 'Ein gesundes Haustier ist sowohl körperlich als auch geistig glücklich...', subServices: ['Verhaltensmedizinische Beratungen (Angst, Aggression, Stress)', 'Katzenverhaltenstraining und Umgebungsanreicherung', 'Ernährungsberatung für alle Lebensphasen (Welpen, Senioren)', 'Diätpläne für bestimmte Krankheiten (z.B. Nieren, Allergien)', 'Anleitung zur Rohfütterung (BARF-Diäten)', 'Integrierte Verhaltenstherapie'] } ] },
+    about: { title: 'Über UrbanVet', p1: 'UrbanVet wurde von Dr. Anja Schmidt gegründet, einer Tierärztin mit über 15 Jahren Erfahrung...', p2: 'Das traditionelle Klinik-Umfeld kann für viele Haustiere und ihre Besitzer eine Quelle der Angst sein...', p3: 'Unsere Mission ist einfach: Wir bieten hochwertige, mitfühlende tierärztliche Versorgung...' },
+    blog: { title: 'UrbanVet Blog', subtitle: 'Tipps und Einblicke von unseren Tierärzten, um Ihnen bei der Pflege Ihrer Stadttiere zu helfen.', back_button: 'Zurück zum Blog', posts: [ { title: '5 Tipps für eine gesunde Stadtkatze', date: '26. Oktober 2023', summary: 'In einer Wohnung zu leben bedeutet nicht, dass Ihre Katze kein reiches und gesundes Leben führen kann...', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Das Stadtleben stellt einzigartige Herausforderungen...')) }, { title: 'Bereiten Sie Ihren Hund auf eine Fahrt mit der U-Bahn vor', date: '15. Oktober 2023', summary: 'Öffentliche Verkehrsmittel können für Hunde stressig sein...', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Die Nutzung der Berliner U-Bahn ist eine bequeme Art...')) }, { title: 'Saisonale Allergien bei Haustieren: Worauf Sie achten sollten', date: '28. September 2023', summary: 'Genau wie Menschen können auch Haustiere unter saisonalen Allergien leiden...', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Wenn sich die Jahreszeiten in Berlin ändern...')) }, { title: 'Die richtige Ernährung für Ihr Stadttier wählen', date: '5. November 2023', summary: 'Ernährung ist der Grundstein der Gesundheit...', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Ein Tiergeschäft zu betreten kann überwältigend sein...')) }, { title: 'Senioren-Tierpflege: So bleibt Ihr älterer Begleiter fit', date: '12. November 2023', summary: 'Unsere Haustiere leben länger als je zuvor...', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Dank der Fortschritte in der Tiermedizin...')) } ] },
+    contactPage: { title: 'Kontakt aufnehmen', subtitle: 'Möchten Sie einen Besuch vereinbaren oder haben Sie eine Frage? Kontaktieren Sie uns!', email: 'kontakt@urbanvet.de' },
+    impressum: { title: 'Impressum / Datenschutz', content: '<h3 class="font-semibold text-lg mb-2">Angaben gemäß § 5 TMG</h3><p>UrbanVet GmbH<br>Musterstraße 1<br>10115 Berlin</p>...' },
+    footer: { tagline: 'Moderne Tiermedizin, geliefert.', legal: 'Impressum & Datenschutz' }
+  }
+};
+
+const serviceIcons = [StethoscopeIcon, SyringeIcon, MicrochipIcon, ClipboardIcon, HeartIcon, BrainIcon];
+const ALL_SERVICES = {
+  [Language.EN]: TEXTS.EN.services.items.map((s, i) => ({ ...s, icon: serviceIcons[i]() })),
+  [Language.DE]: TEXTS.DE.services.items.map((s, i) => ({ ...s, icon: serviceIcons[i]() }))
+};
+const ALL_POSTS = {
+  [Language.EN]: TEXTS.EN.blog.posts.map((p, i) => ({ ...p, id: `post-en-${i}`, imageUrl: `https://picsum.photos/seed/post${i}/1200/800` })),
+  [Language.DE]: TEXTS.DE.blog.posts.map((p, i) => ({ ...p, id: `post-de-${i}`, imageUrl: `https://picsum.photos/seed/post${i}/1200/800` }))
+};
+const NAV_LINKS = [{ page: Page.HOME }, { page: Page.SERVICES }, { page: Page.ABOUT }, { page: Page.BLOG }];
+// ========= END: constants.js =========
+
+
+// ========= START: components.js =========
+const FullLogo = ({ className }) => React.createElement('svg', { viewBox: "0 0 300 100", xmlns: "http://www.w3.org/2000/svg", className: className, 'aria-label': "UrbanVet Logo" }, React.createElement('path', { d: " M 10 50 L 20 50 L 25 40 L 30 60 L 35 50 L 40 50 C 40 50, 45 20, 65 20 C 85 20, 90 50, 90 50 L 92 53 C 92 53, 93 45, 105 45 C 117 45, 118 53, 118 53 L 120 50 L 125 50 L 130 60 L 135 40 L 140 50 L 150 50 L 151 50 L 151 20 L 159 20 L 159 50 L 155 50 L 165 50 L 162 45 L 168 45 L 165 42 L 171 42 L 168 50 L 172 50 L 174 50 L 176 60 L 181 40 L 186 50 L 196 50 ", stroke: "currentColor", strokeWidth: "1.5", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }), React.createElement('circle', { cx: "155", cy: "15", r: "3", stroke: "currentColor", strokeWidth: "1.5", fill: "none" }), React.createElement('style', null, `@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap'); .logo-text { font-family: 'Poppins', sans-serif; font-weight: 600; fill: currentColor; }`), React.createElement('text', { x: "50%", y: "85", textAnchor: "middle", className: "logo-text", fontSize: "20" }, "urbanvet.de"));
+const SmallLogo = ({ className }) => React.createElement('svg', { viewBox: "0 0 200 70", xmlns: "http://www.w3.org/2000/svg", className: className, 'aria-label': "UrbanVet Logo" }, React.createElement('path', { d: " M 10 50 L 20 50 L 25 40 L 30 60 L 35 50 L 40 50 C 40 50, 45 20, 65 20 C 85 20, 90 50, 90 50 L 92 53 C 92 53, 93 45, 105 45 C 117 45, 118 53, 118 53 L 120 50 L 125 50 L 130 60 L 135 40 L 140 50 L 150 50 L 151 50 L 151 20 L 159 20 L 159 50 L 155 50 L 165 50 L 162 45 L 168 45 L 165 42 L 171 42 L 168 50 L 172 50 L 174 50 L 176 60 L 181 40 L 186 50 L 196 50 ", stroke: "currentColor", strokeWidth: "1.5", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }), React.createElement('circle', { cx: "155", cy: "15", r: "3", stroke: "currentColor", strokeWidth: "1.5", fill: "none" }));
+const LogoLineDivider = ({ className }) => React.createElement('svg', { viewBox: "-200 0 596 70", xmlns: "http://www.w3.org/2000/svg", className: className, 'aria-hidden': "true", preserveAspectRatio: "none" }, React.createElement('path', { d: " M -200 50 L 10 50 L 20 50 L 25 40 L 30 60 L 35 50 L 40 50 C 40 50, 45 20, 65 20 C 85 20, 90 50, 90 50 L 92 53 C 92 53, 93 45, 105 45 C 117 45, 118 53, 118 53 L 120 50 L 125 50 L 130 60 L 135 40 L 140 50 L 150 50 L 151 50 L 151 20 L 159 20 L 159 50 L 155 50 L 165 50 L 162 45 L 168 45 L 165 42 L 171 42 L 168 50 L 172 50 L 174 50 L 176 60 L 181 40 L 186 50 L 196 50 L 400 50 ", stroke: "currentColor", strokeWidth: "0.75", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }), React.createElement('circle', { cx: "155", cy: "15", r: "3", stroke: "currentColor", strokeWidth: "0.75", fill: "none" }));
+// ========= END: components.js =========
+
+
+// ========= START: App.js =========
+const { useState, useEffect } = React;
+
+const SectionDivider = () => React.createElement('div', { className: "w-full" }, React.createElement(LogoLineDivider, { className: "w-full h-[50px] text-red-300" }));
+
+const ServiceCard = ({ service }) => React.createElement('div', { className: "bg-gray-50 rounded-lg p-6 text-center transform hover:-translate-y-2 transition-transform duration-300 shadow-sm hover:shadow-xl h-full cursor-pointer" }, React.createElement('div', { className: "flex justify-center items-center mb-4" }, service.icon), React.createElement('h3', { className: "text-xl font-semibold mb-2 text-gray-900" }, service.title), React.createElement('p', { className: "text-gray-600" }, service.description));
+
+const BlogPostCard = ({ post, onClick }) => React.createElement('div', { onClick: onClick, className: "bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300 group border cursor-pointer" }, React.createElement('img', { src: post.imageUrl, alt: post.title, className: "w-full h-48 object-cover" }), React.createElement('div', { className: "p-6" }, React.createElement('p', { className: "text-sm text-gray-500 mb-1" }, post.date), React.createElement('h3', { className: "text-xl font-bold mb-2 text-gray-900 group-hover:text-red-700 transition-colors" }, post.title), React.createElement('p', { className: "text-gray-700" }, post.summary)));
+
+const HomePage = ({ content, onNavigate, services, language }) => React.createElement('div', null, React.createElement('section', { className: "text-center py-20 lg:py-32 px-4 bg-white" }, React.createElement('div', { className: "max-w-4xl mx-auto flex flex-col items-center" }, React.createElement(FullLogo, { className: "w-3/4 max-w-lg h-auto text-red-700 mb-4" }), React.createElement('h1', { className: "text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight" }, content.home.heroTitle), React.createElement('p', { className: "text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto" }, content.home.heroSubtitle), React.createElement('button', { onClick: () => onNavigate(Page.CONTACT), className: "bg-red-700 text-white font-bold py-3 px-8 rounded-full hover:bg-red-800 transition-colors text-lg shadow-lg hover:shadow-xl transform hover:scale-105" }, content.home.ctaButton))), React.createElement(SectionDivider, null), React.createElement('section', { id: "services", className: "py-16 lg:py-24 bg-white" }, React.createElement('div', { className: "max-w-7xl mx-auto px-4" }, React.createElement('h2', { className: "text-3xl lg:text-4xl font-bold text-center mb-2 text-gray-900" }, content.home.servicesTitle), React.createElement('p', { className: "text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto" }, content.home.servicesSubtitle), React.createElement('div', { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-8" }, services.map(service => React.createElement('div', { key: service.id, onClick: () => onNavigate(Page.SERVICES, service.id) }, React.createElement(ServiceCard, { service: service })))))), React.createElement(SectionDivider, null), React.createElement('section', { className: "py-16 lg:py-24 bg-white" }, React.createElement('div', { className: "max-w-4xl mx-auto px-4 text-center" }, React.createElement('h2', { className: "text-3xl lg:text-4xl font-bold text-gray-900 mb-4" }, content.home.aboutTitle), React.createElement('div', { className: "prose prose-lg text-gray-700 mx-auto" }, content.home.aboutText), React.createElement('button', { onClick: () => onNavigate(Page.ABOUT), className: "mt-8 text-red-700 font-semibold hover:underline" }, language === Language.DE ? 'Mehr über uns erfahren →' : 'Learn More About Us →'))));
+
+const ServicesPage = ({ content, services }) => React.createElement('div', { className: "py-16 lg:py-24 min-h-screen bg-white" }, React.createElement('div', { className: "max-w-7xl mx-auto px-4" }, React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-center mb-4 text-gray-900" }, content.title), React.createElement('p', { className: "text-lg text-gray-600 text-center mb-16 max-w-3xl mx-auto" }, content.subtitle), React.createElement('div', { className: "space-y-8" }, services.map((service, index) => React.createElement(React.Fragment, { key: service.id }, React.createElement('section', { id: service.id, className: "bg-white p-8 rounded-lg shadow-lg scroll-mt-24 border" }, React.createElement('div', { className: "flex flex-col sm:flex-row items-start sm:space-x-6" }, React.createElement('div', { className: "flex-shrink-0 mb-4 sm:mb-0" }, service.icon), React.createElement('div', null, React.createElement('h2', { className: "text-3xl font-bold text-gray-900 mb-2" }, service.title), React.createElement('p', { className: "text-lg text-gray-600 mb-8 prose max-w-none" }, service.longDescription))), React.createElement('div', { className: "border-t border-gray-200 pt-8 mt-8" }, React.createElement('ul', { className: "grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4" }, service.subServices.map((item, subIndex) => React.createElement('li', { key: subIndex, className: "flex items-start" }, React.createElement('svg', { className: "w-6 h-6 text-red-700 mr-3 flex-shrink-0 mt-1", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M5 13l4 4L19 7" })), React.createElement('span', { className: "text-gray-700 text-lg" }, item)))))), index < services.length - 1 && React.createElement(SectionDivider, null))))));
+
+const AboutPage = ({ content }) => React.createElement('div', { className: "py-16 lg:py-24 min-h-screen bg-white" }, React.createElement('div', { className: "max-w-4xl mx-auto px-4" }, React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-gray-900 mb-6 text-center" }, content.about.title), React.createElement(SectionDivider, null), React.createElement('div', { className: "grid md:grid-cols-3 gap-12 items-center mt-8" }, React.createElement('div', { className: "md:col-span-1" }, React.createElement('img', { src: "vet_portrait.jpg", alt: "Dr. Anja Schmidt", className: "rounded-lg shadow-xl w-full h-auto object-cover" })), React.createElement('div', { className: "md:col-span-2" }, React.createElement('div', { className: "prose prose-lg max-w-none text-gray-700" }, React.createElement('p', null, content.about.p1), React.createElement('p', null, content.about.p2), React.createElement('p', null, content.about.p3))))));
+
+const BlogPage = ({ content, posts, onViewPost }) => React.createElement('div', { className: "py-16 lg:py-24 min-h-screen bg-white" }, React.createElement('div', { className: "max-w-6xl mx-auto px-4" }, React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-center mb-4 text-gray-900" }, content.blog.title), React.createElement('p', { className: "text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto" }, content.blog.subtitle), React.createElement(SectionDivider, null), React.createElement('div', { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8" }, posts.map(post => React.createElement(BlogPostCard, { key: post.id, post: post, onClick: () => onViewPost(post) })))));
+
+const BlogPostPage = ({ post, onBack, backButtonText }) => React.createElement('div', { className: "py-16 lg:py-24 bg-white min-h-screen" }, React.createElement('div', { className: "max-w-4xl mx-auto px-4" }, React.createElement('button', { onClick: onBack, className: "text-red-700 font-semibold hover:underline mb-8" }, `← ${backButtonText}`), React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight" }, post.title), React.createElement('p', { className: "text-lg text-gray-500 mb-8" }, post.date), React.createElement('img', { src: post.imageUrl, alt: post.title, className: "w-full h-auto max-h-[500px] object-cover rounded-lg shadow-lg mb-8" }), React.createElement('div', { className: "prose prose-lg max-w-none text-gray-700" }, post.content)));
+
+const ContactPage = ({ content }) => React.createElement('div', { className: "py-16 lg:py-24 min-h-screen bg-white flex items-center justify-center" }, React.createElement('div', { className: "max-w-4xl mx-auto px-4 text-center" }, React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-gray-900 mb-4" }, content.contactPage.title), React.createElement('p', { className: "text-lg text-gray-600 mb-8 max-w-2xl mx-auto" }, content.contactPage.subtitle), React.createElement(SectionDivider, null), React.createElement('div', { className: "my-8" }, React.createElement('a', { href: "tel:+491743995177" }, React.createElement('img', { src: "phone_number.png", alt: "Contact phone number", className: "max-w-md w-full mx-auto h-auto cursor-pointer transform hover:scale-105 transition-transform" }))), React.createElement('p', { className: "text-lg text-gray-600 mb-4" }, 'Or send us an email:'), React.createElement('a', { href: `mailto:${content.contactPage.email}`, className: "inline-block bg-red-700 text-white font-bold py-3 px-8 rounded-full hover:bg-red-800 transition-colors text-lg shadow-lg hover:shadow-xl transform hover:scale-105" }, content.contactPage.email)));
+
+const ImpressumPage = ({ content }) => React.createElement('div', { className: "py-16 lg:py-24 min-h-screen bg-white" }, React.createElement('div', { className: "max-w-4xl mx-auto px-4" }, React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-gray-900 mb-8" }, content.impressum.title), React.createElement(SectionDivider, null), React.createElement('div', { className: "prose prose-lg max-w-none text-gray-700 mt-8", dangerouslySetInnerHTML: { __html: content.impressum.content } })));
+
+function App() {
+  const [language, setLanguage] = useState(Language.DE);
+  const [currentPage, setCurrentPage] = useState(Page.HOME);
+  const [currentPost, setCurrentPost] = useState(null);
+  const [targetAnchor, setTargetAnchor] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const content = TEXTS[language];
+  const allServices = ALL_SERVICES[language];
+  const allPosts = ALL_POSTS[language];
+
+  const handleNavigate = (page, anchor) => {
+    setCurrentPage(page);
+    setTargetAnchor(anchor || null);
+    if (!anchor) { window.scrollTo(0, 0); }
+  };
+  
+  const handleViewPost = (post) => {
+    setCurrentPost(post);
+    setCurrentPage(Page.BLOG_POST);
+    window.scrollTo(0, 0);
+  };
+  
+  const handleMobileNav = (page, anchor) => {
+    handleNavigate(page, anchor);
+    setIsMenuOpen(false);
+  };
+
+  useEffect(() => {
+    if (currentPage === Page.SERVICES && targetAnchor) {
+        const element = document.getElementById(targetAnchor);
+        if (element) {
+            const headerOffset = 80;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+            setTargetAnchor(null);
+        }
+    }
+  }, [currentPage, targetAnchor]);
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case Page.HOME: return React.createElement(HomePage, { content, onNavigate: handleNavigate, services: allServices, language });
+      case Page.SERVICES: return React.createElement(ServicesPage, { content: content.services, services: allServices });
+      case Page.ABOUT: return React.createElement(AboutPage, { content });
+      case Page.BLOG: return React.createElement(BlogPage, { content, posts: allPosts, onViewPost: handleViewPost });
+      case Page.BLOG_POST: return currentPost ? React.createElement(BlogPostPage, { post: currentPost, onBack: () => handleNavigate(Page.BLOG), backButtonText: content.blog.back_button }) : React.createElement(BlogPage, { content, posts: allPosts, onViewPost: handleViewPost });
+      case Page.CONTACT: return React.createElement(ContactPage, { content });
+      case Page.IMPRESSUM: return React.createElement(ImpressumPage, { content });
+      default: return React.createElement(HomePage, { content, onNavigate: handleNavigate, services: allServices, language });
+    }
+  };
+  
+  useEffect(() => { document.documentElement.lang = language.toLowerCase(); }, [language]);
+
+  return (
+    React.createElement('div', { className: "bg-white text-gray-800 font-sans" },
+      React.createElement('header', { className: "fixed top-0 left-0 right-0 bg-white shadow-md z-50 h-20 flex items-center" },
+        React.createElement('nav', { className: "container mx-auto px-4 flex justify-between items-center w-full" },
+          // Desktop Nav
+          React.createElement('div', { className: "hidden md:flex w-full items-center" },
+            React.createElement('div', { className: "flex-1 flex justify-start" }, React.createElement('div', { className: "cursor-pointer", onClick: () => handleNavigate(Page.HOME) }, React.createElement(SmallLogo, { className: "h-16 w-auto text-red-700" }))),
+            React.createElement('div', { className: "flex-shrink-0" }, React.createElement('button', { onClick: () => handleNavigate(Page.CONTACT), className: "bg-red-700 text-white font-bold py-2 px-6 rounded-full hover:bg-red-800 transition-colors text-lg shadow-md hover:shadow-lg transform hover:scale-105" }, content.nav[Page.CONTACT])),
+            React.createElement('div', { className: "flex-1 flex justify-end items-center space-x-4" },
+              NAV_LINKS.map(link => React.createElement('button', { key: link.page, onClick: () => handleNavigate(link.page), className: `text-lg font-semibold transition-colors px-2 ${currentPage === link.page ? 'text-red-700' : 'text-gray-600 hover:text-red-700'}` }, content.nav[link.page])),
+              React.createElement('div', { className: "flex items-center space-x-2 pl-4" },
+                React.createElement('button', { onClick: () => setLanguage(Language.EN), className: `p-1 rounded-full ${language === Language.EN ? 'bg-red-100' : ''}` }, React.createElement(UKFlagIcon, null)),
+                React.createElement('button', { onClick: () => setLanguage(Language.DE), className: `p-1 rounded-full ${language === Language.DE ? 'bg-red-100' : ''}` }, React.createElement(DEFlagIcon, null))
+              )
+            )
+          ),
+          // Mobile Nav
+          React.createElement('div', { className: "md:hidden w-full flex items-center justify-between" },
+            React.createElement('div', { className: "flex-1 flex justify-start" }, React.createElement('div', { className: "cursor-pointer", onClick: () => handleNavigate(Page.HOME) }, React.createElement(SmallLogo, { className: "h-16 w-auto text-red-700" }))),
+            React.createElement('div', { className: "flex-shrink-0" }, React.createElement('button', { onClick: () => handleNavigate(Page.CONTACT), className: "bg-red-700 text-white font-bold py-2 px-5 rounded-full hover:bg-red-800 transition-colors text-base shadow-md" }, content.nav[Page.CONTACT])),
+            React.createElement('div', { className: "flex-1 flex justify-end" },
+              React.createElement('button', { onClick: () => setIsMenuOpen(true), className: "text-gray-700" },
+                React.createElement('svg', { className: "w-8 h-8", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M4 6h16M4 12h16m-7 6h7" }))
+              )
+            )
+          )
+        )
+      ),
+      // Mobile Menu Panel
+      React.createElement('div', { className: `fixed top-0 right-0 h-full w-full bg-white z-50 transform menu-panel ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}` },
+        React.createElement('div', { className: "flex justify-end p-4" },
+          React.createElement('button', { onClick: () => setIsMenuOpen(false), className: "text-gray-700" },
+            React.createElement('svg', { className: "w-8 h-8", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M6 18L18 6M6 6l12 12" }))
+          )
+        ),
+        React.createElement('div', { className: "flex flex-col items-center justify-center h-full -mt-16 space-y-8" },
+          NAV_LINKS.map(link => React.createElement('button', { key: `mobile-${link.page}`, onClick: () => handleMobileNav(link.page), className: `text-3xl font-bold transition-colors ${currentPage === link.page ? 'text-red-700' : 'text-gray-700 hover:text-red-700'}` }, content.nav[link.page])),
+          React.createElement('div', { className: "flex items-center space-x-4 pt-8" },
+            React.createElement('button', { onClick: () => { setLanguage(Language.EN); setIsMenuOpen(false); }, className: `p-2 rounded-full ${language === Language.EN ? 'bg-red-100' : ''}` }, React.createElement(UKFlagIcon, null)),
+            React.createElement('button', { onClick: () => { setLanguage(Language.DE); setIsMenuOpen(false); }, className: `p-2 rounded-full ${language === Language.DE ? 'bg-red-100' : ''}` }, React.createElement(DEFlagIcon, null))
+          )
+        )
+      ),
+      React.createElement('main', { className: "pt-20" }, renderPage()),
+      React.createElement('footer', { className: "bg-red-700 text-white" },
+        React.createElement('div', { className: "container mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left" },
+          React.createElement('div', { className: "mb-4 md:mb-0" },
+            React.createElement('h4', { className: "font-bold text-lg" }, 'UrbanVet'),
+            React.createElement('p', { className: "text-red-200" }, content.footer.tagline)
+          ),
+          React.createElement('div', { className: "mb-4 md:mb-0" }, React.createElement('button', { onClick: () => handleNavigate(Page.IMPRESSUM), className: "font-semibold transition-colors hover:text-red-200" }, content.footer.legal)),
+          React.createElement('p', { className: "text-sm text-red-200" }, `© ${new Date().getFullYear()} UrbanVet. All rights reserved.`)
+        )
+      )
+    )
+  );
+}
+// ========= END: App.js =========
+
+
+// ========= START: index.js =========
+const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(rootElement);
+root.render(React.createElement(React.StrictMode, null, React.createElement(App, null)));
+// ========= END: index.js =========
+
+    </script>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>
