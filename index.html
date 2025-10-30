@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -18,7 +19,6 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <!-- Babel for in-browser JSX compilation -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body>
     <div id="root"></div>
@@ -40,7 +40,7 @@ const HeartIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2
 const UKFlagIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 60 30", className: "w-8 h-auto" }, React.createElement('g', { clipPath: "url(#s)" }, React.createElement('path', { d: "M0 0v30h60V0z", fill: "#012169" }), React.createElement('path', { d: "M0 0l60 30m0-30L0 30", stroke: "#fff", strokeWidth: "6" }), React.createElement('path', { d: "M0 0l60 30m0-30L0 30", clipPath: "url(#t)", stroke: "#C8102E", strokeWidth: "4" }), React.createElement('path', { d: "M30 0v30M0 15h60", stroke: "#fff", strokeWidth: "10" }), React.createElement('path', { d: "M30 0v30M0 15h60", stroke: "#C8102E", strokeWidth: "6" })), React.createElement('defs', null, React.createElement('clipPath', { id: "s" }, React.createElement('path', { d: "M0 0v30h60V0z" })), React.createElement('clipPath', { id: "t" }, React.createElement('path', { d: "M30 15h30v15zv15h-30zH0z" }))));
 const DEFlagIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 5 3", className: "w-8 h-auto" }, React.createElement('path', { d: "M0 0h5v3H0z" }), React.createElement('path', { d: "M0 1h5v2H0z", fill: "#D00" }), React.createElement('path', { d: "M0 2h5v1H0z", fill: "#FFCE00" }));
 
-// TEXT CONTENT (shortened for brevity, full content is still here)
+// TEXT CONTENT
 const TEXTS = {
   [Language.EN]: {
     nav: { [Page.HOME]: 'Home', [Page.SERVICES]: 'Services', [Page.ABOUT]: 'About Us', [Page.BLOG]: 'Blog', [Page.CONTACT]: 'Contact', [Page.IMPRESSUM]: 'Legal' },
@@ -77,23 +77,50 @@ const NAV_LINKS = [{ page: Page.HOME }, { page: Page.SERVICES }, { page: Page.AB
 // ========= END: constants.js =========
 
 
-// ========= START: components.js =========
-const FullLogo = ({ className }) => React.createElement('svg', { viewBox: "0 0 300 100", xmlns: "http://www.w3.org/2000/svg", className: className, 'aria-label': "UrbanVet Logo" }, React.createElement('path', { d: " M 10 50 L 20 50 L 25 40 L 30 60 L 35 50 L 40 50 C 40 50, 45 20, 65 20 C 85 20, 90 50, 90 50 L 92 53 C 92 53, 93 45, 105 45 C 117 45, 118 53, 118 53 L 120 50 L 125 50 L 130 60 L 135 40 L 140 50 L 150 50 L 151 50 L 151 20 L 159 20 L 159 50 L 155 50 L 165 50 L 162 45 L 168 45 L 165 42 L 171 42 L 168 50 L 172 50 L 174 50 L 176 60 L 181 40 L 186 50 L 196 50 ", stroke: "currentColor", strokeWidth: "1.5", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }), React.createElement('circle', { cx: "155", cy: "15", r: "3", stroke: "currentColor", strokeWidth: "1.5", fill: "none" }), React.createElement('style', null, `@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap'); .logo-text { font-family: 'Poppins', sans-serif; font-weight: 600; fill: currentColor; }`), React.createElement('text', { x: "50%", y: "85", textAnchor: "middle", className: "logo-text", fontSize: "20" }, "urbanvet.de"));
-const SmallLogo = ({ className }) => React.createElement('svg', { viewBox: "0 0 200 70", xmlns: "http://www.w3.org/2000/svg", className: className, 'aria-label': "UrbanVet Logo" }, React.createElement('path', { d: " M 10 50 L 20 50 L 25 40 L 30 60 L 35 50 L 40 50 C 40 50, 45 20, 65 20 C 85 20, 90 50, 90 50 L 92 53 C 92 53, 93 45, 105 45 C 117 45, 118 53, 118 53 L 120 50 L 125 50 L 130 60 L 135 40 L 140 50 L 150 50 L 151 50 L 151 20 L 159 20 L 159 50 L 155 50 L 165 50 L 162 45 L 168 45 L 165 42 L 171 42 L 168 50 L 172 50 L 174 50 L 176 60 L 181 40 L 186 50 L 196 50 ", stroke: "currentColor", strokeWidth: "1.5", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }), React.createElement('circle', { cx: "155", cy: "15", r: "3", stroke: "currentColor", strokeWidth: "1.5", fill: "none" }));
-const LogoLineDivider = ({ className }) => React.createElement('svg', { viewBox: "-200 0 596 70", xmlns: "http://www.w3.org/2000/svg", className: className, 'aria-hidden': "true", preserveAspectRatio: "none" }, React.createElement('path', { d: " M -200 50 L 10 50 L 20 50 L 25 40 L 30 60 L 35 50 L 40 50 C 40 50, 45 20, 65 20 C 85 20, 90 50, 90 50 L 92 53 C 92 53, 93 45, 105 45 C 117 45, 118 53, 118 53 L 120 50 L 125 50 L 130 60 L 135 40 L 140 50 L 150 50 L 151 50 L 151 20 L 159 20 L 159 50 L 155 50 L 165 50 L 162 45 L 168 45 L 165 42 L 171 42 L 168 50 L 172 50 L 174 50 L 176 60 L 181 40 L 186 50 L 196 50 L 400 50 ", stroke: "currentColor", strokeWidth: "0.75", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }), React.createElement('circle', { cx: "155", cy: "15", r: "3", stroke: "currentColor", strokeWidth: "0.75", fill: "none" }));
-// ========= END: components.js =========
-
-
 // ========= START: App.js =========
 const { useState, useEffect } = React;
 
-const SectionDivider = () => React.createElement('div', { className: "w-full" }, React.createElement(LogoLineDivider, { className: "w-full h-[50px] text-red-300" }));
+const SectionDivider = () => React.createElement('div', { className: "w-full" }, 
+    React.createElement('img', { 
+        src: "logo-divider.png", 
+        alt: "", 
+        'aria-hidden': "true", 
+        className: "w-full h-[50px] object-cover" 
+    })
+);
 
 const ServiceCard = ({ service }) => React.createElement('div', { className: "bg-gray-50 rounded-lg p-6 text-center transform hover:-translate-y-2 transition-transform duration-300 shadow-sm hover:shadow-xl h-full cursor-pointer" }, React.createElement('div', { className: "flex justify-center items-center mb-4" }, service.icon), React.createElement('h3', { className: "text-xl font-semibold mb-2 text-gray-900" }, service.title), React.createElement('p', { className: "text-gray-600" }, service.description));
 
 const BlogPostCard = ({ post, onClick }) => React.createElement('div', { onClick: onClick, className: "bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300 group border cursor-pointer" }, React.createElement('img', { src: post.imageUrl, alt: post.title, className: "w-full h-48 object-cover" }), React.createElement('div', { className: "p-6" }, React.createElement('p', { className: "text-sm text-gray-500 mb-1" }, post.date), React.createElement('h3', { className: "text-xl font-bold mb-2 text-gray-900 group-hover:text-red-700 transition-colors" }, post.title), React.createElement('p', { className: "text-gray-700" }, post.summary)));
 
-const HomePage = ({ content, onNavigate, services, language }) => React.createElement('div', null, React.createElement('section', { className: "text-center py-20 lg:py-32 px-4 bg-white" }, React.createElement('div', { className: "max-w-4xl mx-auto flex flex-col items-center" }, React.createElement(FullLogo, { className: "w-3/4 max-w-lg h-auto text-red-700 mb-4" }), React.createElement('h1', { className: "text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight" }, content.home.heroTitle), React.createElement('p', { className: "text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto" }, content.home.heroSubtitle), React.createElement('button', { onClick: () => onNavigate(Page.CONTACT), className: "bg-red-700 text-white font-bold py-3 px-8 rounded-full hover:bg-red-800 transition-colors text-lg shadow-lg hover:shadow-xl transform hover:scale-105" }, content.home.ctaButton))), React.createElement(SectionDivider, null), React.createElement('section', { id: "services", className: "py-16 lg:py-24 bg-white" }, React.createElement('div', { className: "max-w-7xl mx-auto px-4" }, React.createElement('h2', { className: "text-3xl lg:text-4xl font-bold text-center mb-2 text-gray-900" }, content.home.servicesTitle), React.createElement('p', { className: "text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto" }, content.home.servicesSubtitle), React.createElement('div', { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-8" }, services.map(service => React.createElement('div', { key: service.id, onClick: () => onNavigate(Page.SERVICES, service.id) }, React.createElement(ServiceCard, { service: service })))))), React.createElement(SectionDivider, null), React.createElement('section', { className: "py-16 lg:py-24 bg-white" }, React.createElement('div', { className: "max-w-4xl mx-auto px-4 text-center" }, React.createElement('h2', { className: "text-3xl lg:text-4xl font-bold text-gray-900 mb-4" }, content.home.aboutTitle), React.createElement('div', { className: "prose prose-lg text-gray-700 mx-auto" }, content.home.aboutText), React.createElement('button', { onClick: () => onNavigate(Page.ABOUT), className: "mt-8 text-red-700 font-semibold hover:underline" }, language === Language.DE ? 'Mehr über uns erfahren →' : 'Learn More About Us →'))));
+const HomePage = ({ content, onNavigate, services, language }) => React.createElement('div', null, 
+    React.createElement('section', { className: "text-center py-20 lg:py-32 px-4 bg-white" }, 
+        React.createElement('div', { className: "max-w-4xl mx-auto flex flex-col items-center" }, 
+            React.createElement('img', { src: "logo-main.png", alt: "UrbanVet Logo", className: "w-3/4 max-w-lg h-auto mb-4" }),
+            React.createElement('h1', { className: "text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight" }, content.home.heroTitle), 
+            React.createElement('p', { className: "text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto" }, content.home.heroSubtitle), 
+            React.createElement('button', { onClick: () => onNavigate(Page.CONTACT), className: "bg-red-700 text-white font-bold py-3 px-8 rounded-full hover:bg-red-800 transition-colors text-lg shadow-lg hover:shadow-xl transform hover:scale-105" }, content.home.ctaButton)
+        )
+    ), 
+    React.createElement(SectionDivider, null), 
+    React.createElement('section', { id: "services", className: "py-16 lg:py-24 bg-white" }, 
+        React.createElement('div', { className: "max-w-7xl mx-auto px-4" }, 
+            React.createElement('h2', { className: "text-3xl lg:text-4xl font-bold text-center mb-2 text-gray-900" }, content.home.servicesTitle), 
+            React.createElement('p', { className: "text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto" }, content.home.servicesSubtitle), 
+            React.createElement('div', { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-8" }, 
+                services.map(service => React.createElement('div', { key: service.id, onClick: () => onNavigate(Page.SERVICES, service.id) }, React.createElement(ServiceCard, { service: service })))
+            )
+        )
+    ), 
+    React.createElement(SectionDivider, null), 
+    React.createElement('section', { className: "py-16 lg:py-24 bg-white" }, 
+        React.createElement('div', { className: "max-w-4xl mx-auto px-4 text-center" }, 
+            React.createElement('h2', { className: "text-3xl lg:text-4xl font-bold text-gray-900 mb-4" }, content.home.aboutTitle), 
+            React.createElement('div', { className: "prose prose-lg text-gray-700 mx-auto" }, content.home.aboutText), 
+            React.createElement('button', { onClick: () => onNavigate(Page.ABOUT), className: "mt-8 text-red-700 font-semibold hover:underline" }, language === Language.DE ? 'Mehr über uns erfahren →' : 'Learn More About Us →')
+        )
+    )
+);
 
 const ServicesPage = ({ content, services }) => React.createElement('div', { className: "py-16 lg:py-24 min-h-screen bg-white" }, React.createElement('div', { className: "max-w-7xl mx-auto px-4" }, React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-center mb-4 text-gray-900" }, content.title), React.createElement('p', { className: "text-lg text-gray-600 text-center mb-16 max-w-3xl mx-auto" }, content.subtitle), React.createElement('div', { className: "space-y-8" }, services.map((service, index) => React.createElement(React.Fragment, { key: service.id }, React.createElement('section', { id: service.id, className: "bg-white p-8 rounded-lg shadow-lg scroll-mt-24 border" }, React.createElement('div', { className: "flex flex-col sm:flex-row items-start sm:space-x-6" }, React.createElement('div', { className: "flex-shrink-0 mb-4 sm:mb-0" }, service.icon), React.createElement('div', null, React.createElement('h2', { className: "text-3xl font-bold text-gray-900 mb-2" }, service.title), React.createElement('p', { className: "text-lg text-gray-600 mb-8 prose max-w-none" }, service.longDescription))), React.createElement('div', { className: "border-t border-gray-200 pt-8 mt-8" }, React.createElement('ul', { className: "grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4" }, service.subServices.map((item, subIndex) => React.createElement('li', { key: subIndex, className: "flex items-start" }, React.createElement('svg', { className: "w-6 h-6 text-red-700 mr-3 flex-shrink-0 mt-1", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M5 13l4 4L19 7" })), React.createElement('span', { className: "text-gray-700 text-lg" }, item)))))), index < services.length - 1 && React.createElement(SectionDivider, null))))));
 
@@ -169,7 +196,11 @@ function App() {
         React.createElement('nav', { className: "container mx-auto px-4 flex justify-between items-center w-full" },
           // Desktop Nav
           React.createElement('div', { className: "hidden md:flex w-full items-center" },
-            React.createElement('div', { className: "flex-1 flex justify-start" }, React.createElement('div', { className: "cursor-pointer", onClick: () => handleNavigate(Page.HOME) }, React.createElement(SmallLogo, { className: "h-16 w-auto text-red-700" }))),
+            React.createElement('div', { className: "flex-1 flex justify-start" }, 
+                React.createElement('div', { className: "cursor-pointer", onClick: () => handleNavigate(Page.HOME) },
+                    React.createElement('img', { src: 'logo-small.png', alt: 'UrbanVet Logo', className: 'h-16 w-auto' })
+                )
+            ),
             React.createElement('div', { className: "flex-shrink-0" }, React.createElement('button', { onClick: () => handleNavigate(Page.CONTACT), className: "bg-red-700 text-white font-bold py-2 px-6 rounded-full hover:bg-red-800 transition-colors text-lg shadow-md hover:shadow-lg transform hover:scale-105" }, content.nav[Page.CONTACT])),
             React.createElement('div', { className: "flex-1 flex justify-end items-center space-x-4" },
               NAV_LINKS.map(link => React.createElement('button', { key: link.page, onClick: () => handleNavigate(link.page), className: `text-lg font-semibold transition-colors px-2 ${currentPage === link.page ? 'text-red-700' : 'text-gray-600 hover:text-red-700'}` }, content.nav[link.page])),
@@ -181,7 +212,11 @@ function App() {
           ),
           // Mobile Nav
           React.createElement('div', { className: "md:hidden w-full flex items-center justify-between" },
-            React.createElement('div', { className: "flex-1 flex justify-start" }, React.createElement('div', { className: "cursor-pointer", onClick: () => handleNavigate(Page.HOME) }, React.createElement(SmallLogo, { className: "h-16 w-auto text-red-700" }))),
+            React.createElement('div', { className: "flex-1 flex justify-start" }, 
+                React.createElement('div', { className: "cursor-pointer", onClick: () => handleNavigate(Page.HOME) },
+                    React.createElement('img', { src: 'logo-small.png', alt: 'UrbanVet Logo', className: 'h-16 w-auto' })
+                )
+            ),
             React.createElement('div', { className: "flex-shrink-0" }, React.createElement('button', { onClick: () => handleNavigate(Page.CONTACT), className: "bg-red-700 text-white font-bold py-2 px-5 rounded-full hover:bg-red-800 transition-colors text-base shadow-md" }, content.nav[Page.CONTACT])),
             React.createElement('div', { className: "flex-1 flex justify-end" },
               React.createElement('button', { onClick: () => setIsMenuOpen(true), className: "text-gray-700" },
@@ -230,6 +265,5 @@ root.render(React.createElement(React.StrictMode, null, React.createElement(App,
 // ========= END: index.js =========
 
     </script>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
