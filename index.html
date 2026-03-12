@@ -1,36 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UrbanVet | Ihr Mobiler Tierarzt in der Stadt</title>
+    <title>UrbanVet | Mobile Tierarztpraxis für Hunde und Katzen in Berlin und Brandenburg</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Poppins', sans-serif; }
-        /* Simple transition for mobile menu */
         .menu-panel { transition: transform 0.3s ease-in-out; }
     </style>
-    <!-- React Libraries -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <!-- Babel for in-browser JSX compilation -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
-// BUNDLED APPLICATION CODE - Replaces all .tsx files
-
-// ========= START: constants.js =========
 const Language = { EN: 'EN', DE: 'DE' };
 const Page = { HOME: 'HOME', SERVICES: 'SERVICES', ABOUT: 'ABOUT', BLOG: 'BLOG', BLOG_POST: 'BLOG_POST', CONTACT: 'CONTACT', IMPRESSUM: 'IMPRESSUM' };
 
-// ICONS (as React Components)
 const SyringeIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10 text-red-700", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5 }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M8.25 7.5l.415-.415a.375.375 0 01.53 0l.415.415V15a.75.75 0 01-1.5 0V7.5zM15.75 7.5l.415-.415a.375.375 0 01.53 0l.415.415V15a.75.75 0 01-1.5 0V7.5zM4.5 9.75v1.5a.75.75 0 00.75.75h13.5a.75.75 0 00.75-.75v-1.5m4.5 12.75v-1.5m-15-1.5v1.5m15-1.5v-1.5M12 15V9m3-3H9m-1.5-2.25h9A2.25 2.25 0 0118.75 6v12a2.25 2.25 0 01-2.25 2.25h-9A2.25 2.25 0 015.25 18V6A2.25 2.25 0 017.5 3.75z" }));
 const StethoscopeIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10 text-red-700", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5 }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M3.75 9.75v1.5a3.75 3.75 0 003.75 3.75h.75m-4.5-5.25v.01M12 3v.01M12 21v.01M12 12a1.5 1.5 0 011.5-1.5h1.5a1.5 1.5 0 011.5 1.5v1.5a1.5 1.5 0 01-1.5 1.5h-1.5a1.5 1.5 0 01-1.5-1.5v-1.5zM12 3.75a.75.75 0 01.75-.75h.75a3.75 3.75 0 013.75 3.75v.75m-4.5 12.75a.75.75 0 00.75.75h.75a3.75 3.75 0 003.75-3.75v-.75" }));
 const MicrochipIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10 text-red-700", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5 }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M3.75 4.5v15a2.25 2.25 0 002.25 2.25h12a2.25 2.25 0 002.25-2.25v-15A2.25 2.25 0 0018 2.25h-12A2.25 2.25 0 003.75 4.5zM9.75 9.75v4.5m4.5-4.5v4.5M8.25 6h7.5M8.25 18h7.5" }));
@@ -40,27 +32,323 @@ const HeartIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2
 const UKFlagIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 60 30", className: "w-8 h-auto" }, React.createElement('g', { clipPath: "url(#s)" }, React.createElement('path', { d: "M0 0v30h60V0z", fill: "#012169" }), React.createElement('path', { d: "M0 0l60 30m0-30L0 30", stroke: "#fff", strokeWidth: "6" }), React.createElement('path', { d: "M0 0l60 30m0-30L0 30", clipPath: "url(#t)", stroke: "#C8102E", strokeWidth: "4" }), React.createElement('path', { d: "M30 0v30M0 15h60", stroke: "#fff", strokeWidth: "10" }), React.createElement('path', { d: "M30 0v30M0 15h60", stroke: "#C8102E", strokeWidth: "6" })), React.createElement('defs', null, React.createElement('clipPath', { id: "s" }, React.createElement('path', { d: "M0 0v30h60V0z" })), React.createElement('clipPath', { id: "t" }, React.createElement('path', { d: "M30 15h30v15zv15h-30zH0z" }))));
 const DEFlagIcon = () => React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 5 3", className: "w-8 h-auto" }, React.createElement('path', { d: "M0 0h5v3H0z" }), React.createElement('path', { d: "M0 1h5v2H0z", fill: "#D00" }), React.createElement('path', { d: "M0 2h5v1H0z", fill: "#FFCE00" }));
 
-// TEXT CONTENT
 const TEXTS = {
   [Language.EN]: {
-    nav: { [Page.HOME]: 'Home', [Page.SERVICES]: 'Services', [Page.ABOUT]: 'About Us', [Page.BLOG]: 'Blog', [Page.CONTACT]: 'Contact', [Page.IMPRESSUM]: 'Legal' },
-    home: { heroTitle: 'Compassionate Vet Care, at Your Doorstep.', heroSubtitle: 'Professional, stress-free veterinary services for your beloved pets in the comfort of your own home.', ctaButton: 'Book an Appointment', servicesTitle: 'Our Services', servicesSubtitle: 'We offer a wide range of mobile veterinary services to keep your pet healthy and happy.', aboutTitle: 'Meet UrbanVet', aboutText: React.createElement(React.Fragment, null, 'Founded on the belief that pet care should be personal and convenient, UrbanVet brings the clinic to you. Our experienced team is dedicated to providing the highest standard of care without the stress of travel for you or your pet. We serve the greater Berlin area, combining modern medicine with a compassionate touch.') },
-    services: { title: "Our Mobile Vet Services", subtitle: "Comprehensive care for your pet's needs, delivered with convenience and compassion. Click a category below to learn more.", items: [ { id: 'general-medicine', title: "General & Specialized Diagnostics", description: "Comprehensive examinations and advanced diagnostics to assess your pet's health.", longDescription: 'We provide thorough clinical examinations and utilize advanced diagnostic tools to get a complete picture of your pet’s health, from routine check-ups to complex lameness evaluations.', subServices: [ 'Comprehensive clinical examination', 'Orthopedic examination & lameness diagnostics', 'Neurological assessment', 'Dermatological examination', 'Geriatric health checks', 'Allergy diagnostics and therapy', 'Blood tests (hematological & biochemical)', 'Fecal examinations (rapid tests, external laboratory diagnostics)', 'Urological diagnostic (urine tests)', 'Biopsies and sample collection (skin, fine-needle aspiration, lab submission)', ] }, { id: 'preventive-medicine', title: "Preventive Medicine & Prophylaxis", description: "Vaccinations, parasite control, and wellness programs to prevent illness.", longDescription: 'Prevention is the cornerstone of a long and healthy life. We offer tailored vaccination schedules, comprehensive parasite control, and advice for safe travel with your pet.', subServices: [ 'Vaccinations and general health screenings', 'Senior wellness programs', 'Treatment and prevention of endo- and ectoparasites', 'Consultation on flea/tick prevention', 'Worming and deworming protocols', 'Travel medicine and international health certificates', ] }, { id: 'internal-medicine', title: "Internal Medicine & Special Diseases", description: "Management of complex conditions like diabetes, kidney disease, and more.", longDescription: 'Our team is experienced in diagnosing and managing a wide range of chronic and complex internal diseases, providing ongoing care and support in your home.', subServices: [ 'Gastrointestinal diseases (diarrhea, vomiting, pancreatitis)', 'Endocrinology (Diabetes, Thyroid & Adrenal diseases)', 'Nephrology (Chronic kidney disease, acute kidney failure)', 'Urology (cystitis, urinary stones, incontinence)', 'Blood pressure measurement and proteinuria screening', 'Geriatrics (senior health programs, pain management)', 'Hematology & sample collection for laboratory submission', ] }, { id: 'general-vet', title: "General Veterinary Services", description: "Wound care, health certificates, and compassionate in-home euthanasia.", longDescription: 'Beyond diagnostics and prevention, we offer essential services including wound management, official documentation, and providing a peaceful end-of-life transition at home.', subServices: [ 'Wound care and emergency management', 'In-house pharmacy in accordance with Veterinary Pharmacy Regulations (TÄHAV)', 'Issuing of health certificates and EU pet passports', 'Travel consultation', 'Euthanasia and palliative care at home upon request', ] }, { id: 'preventive-consultations', title: "Preventive Medicine & Consultations", description: "Expert advice on nutrition, weight management, and parasite prevention.", longDescription: 'We believe in empowering pet owners with knowledge. Our consultations cover everything from diet to behavior, helping you make the best decisions for your companion.', subServices: [ 'Parasite prevention (fleas, ticks, worms, travel-related diseases)', 'Nutritional counselling (puppies, seniors, specific diets, BARF)', 'Behavioural consultation – certified dog trainer (USP)', 'Weight management programs', 'Senior pet check-ups', 'Vaccination & medication reminders', ] }, { id: 'behaviour-nutrition', title: "Behaviour & Nutrition", description: "Consultations for behavioral issues and customized nutritional plans.", longDescription: 'A healthy pet is happy in both body and mind. We offer integrated behavioral therapy and specialized nutritional advice to address the root causes of many common issues.', subServices: [ 'Behavioural medicine consultations (anxiety, aggression, stress)', 'Cat behaviour training and environmental enrichment', 'Nutritional advice for all life stages (puppies, seniors)', 'Diet plans for specific diseases (e.g., kidney, allergies)', 'Guidance on raw feeding (BARF diets)', 'Integrated behavioural therapy', ] }, ] },
-    about: { title: 'About UrbanVet', p1: 'UrbanVet was founded by Dr. Anja Schmidt, a veterinarian with over 15 years of experience in small animal medicine. After working in busy city clinics, she saw a growing need for a more personalized and less stressful approach to pet healthcare.', p2: 'The traditional clinic environment can be a source of anxiety for many pets and their owners. The travel, the waiting room, and the unfamiliar smells and sounds can make a necessary visit a difficult experience. UrbanVet was created to eliminate these stressors.', p3: 'Our mission is simple: to provide top-quality, compassionate veterinary care in the place your pet feels safest – their home. We use state-of-the-art mobile equipment and are committed to building lasting relationships with our clients and their furry family members.' },
-    blog: { title: 'UrbanVet Blog', subtitle: 'Tips and insights from our vets to help you care for your city pets.', back_button: 'Back to Blog', posts: [ { title: '5 Tips for a Healthy City Cat', date: 'October 26, 2023', summary: 'Living in an apartment doesn\'t mean your cat can\'t have a rich and healthy life. Here are five essential tips...', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'City living presents unique challenges and opportunities for our feline friends...'), React.createElement('h3', { className: "font-bold mt-4 mb-2" }, '1. Vertical Space is Key'), React.createElement('p', null, 'Cats are natural climbers...')) }, { title: 'Preparing Your Dog for a Trip on the U-Bahn', date: 'October 15, 2023', summary: 'Public transport can be stressful for dogs. We break down how to make your next U-Bahn ride a positive experience.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Using Berlin\'s U-Bahn is a convenient way to get around...')) }, { title: 'Seasonal Allergies in Pets: What to Look For', date: 'September 28, 2023', summary: 'Just like humans, pets can suffer from seasonal allergies. Learn to recognize the signs and how you can provide relief.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'As the seasons change in Berlin...')) }, { title: 'Choosing the Right Diet for Your Urban Pet', date: 'November 5, 2023', summary: 'Nutrition is the cornerstone of health. Navigating the world of pet food can be confusing. We guide you through the basics.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Walking into a pet store can be overwhelming...')) }, { title: 'Senior Pet Care: Keeping Your Older Companion Comfortable', date: 'November 12, 2023', summary: 'Our pets are living longer than ever. Learn how to adapt your care to ensure their golden years are happy and comfortable.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Thanks to advances in veterinary care...')) } ] },
-    contactPage: { title: 'Get in Touch', subtitle: 'Ready to schedule a visit or have a question? Contact us!', email: 'contact@urbanvet.de' },
-    impressum: { title: 'Impressum / Privacy Policy', content: '<h3 class="font-semibold text-lg mb-2">Information according to § 5 TMG</h3><p>UrbanVet GmbH<br>Musterstraße 1<br>10115 Berlin</p><h3 class="font-semibold text-lg mt-4 mb-2">Represented by:</h3><p>Dr. Anja Schmidt</p><h3 class="font-semibold text-lg mt-4 mb-2">Contact:</h3><p>Telephone: +49 174 3995177<br>Email: contact@urbanvet.de</p><h3 class="font-semibold text-lg mt-4 mb-2">Register entry:</h3><p>Entry in the Handelsregister.<br>Registering court: Amtsgericht Charlottenburg<br>Registration number: HRB 123456 B</p><h3 class="font-semibold text-lg mt-4 mb-2">VAT ID:</h3><p>VAT identification number according to §27a Value Added Tax Act:<br>DE123456789</p><h2 class="font-bold text-xl mt-8 mb-4">Privacy Policy</h2><p>Your privacy is important to us...</p>' },
-    footer: { tagline: 'Modern vet care, delivered.', legal: 'Impressum & Privacy' }
+    nav: { [Page.HOME]: 'Home', [Page.SERVICES]: 'Services', [Page.ABOUT]: 'About Me', [Page.BLOG]: 'Blog', [Page.CONTACT]: 'Contact', [Page.IMPRESSUM]: 'Legal' },
+    home: {
+      heroTitle: 'English Speaking Vet Berlin & Brandenburg. Mobile Home Visits for Dogs & Cats',
+      heroSubtitle: 'English-speaking mobile veterinary care for dogs and cats in Berlin and Brandenburg – calm, personal, and stress-free.',
+      ctaButton: 'Book a home visit',
+      introTitle: 'Home visits',
+      introParagraphs: [
+        'For many pets, the journey to a veterinary clinic and waiting in a busy waiting room can be stressful. Cats in particular often react strongly to unfamiliar environments, new smells, and transportation.',
+        'With UrbanVet, your English-speaking mobile veterinarian in Berlin, your vet comes directly to your home. This allows examinations and treatments to take place in the familiar surroundings where your pet feels safest.',
+        'Appointments are calm, unhurried, and tailored to the individual needs of your pet.',
+        'UrbanVet offers mobile veterinary home visits for dogs and cats in Berlin and Brandenburg, providing modern veterinary care built on trust, empathy, and personal attention.'
+      ],
+      aboutTitle: 'About me',
+      aboutText: 'Animals have always been an important part of my life, and I knew from an early age that I wanted to become a veterinarian.'
+    },
+    services: {
+      title: 'Services',
+      subtitle: 'Mobile veterinary care for dogs and cats in Berlin and Brandenburg.',
+      items: [
+        {
+          id: 'general-medicine',
+          title: 'General Medicine & Specialized Diagnostics',
+          description: 'Thorough check-ups and modern diagnostic tools for reliable assessment.',
+          longDescription: 'We provide thorough check-ups using modern diagnostic tools:',
+          subServices: [
+            'General health exams',
+            'Orthopedics',
+            'Neurology',
+            'Dermatology',
+            'Blood, urine, and stool tests',
+            'Allergy testing and treatment',
+            'Biopsies & sample collection'
+          ]
+        },
+        {
+          id: 'preventive-medicine',
+          title: 'Preventive Care & Wellness',
+          description: 'Vaccinations, prevention, certificates, and travel preparation.',
+          longDescription: 'Preventive care and wellness services include:',
+          subServices: [
+            'Vaccinations & routine check-ups',
+            'Parasite, flea, and tick prevention, deworming',
+            'Senior wellness programs',
+            'Health certificates',
+            'EU pet passports & travel medicine'
+          ]
+        },
+        {
+          id: 'internal-medicine',
+          title: 'Internal Medicine',
+          description: 'Support for chronic and internal medical conditions.',
+          longDescription: 'Diagnosis and treatment for internal medical issues such as:',
+          subServices: [
+            'Gastrointestinal issues',
+            'Diabetes & thyroid disorders',
+            'Kidney & urinary tract problems',
+            'Blood pressure checks & lab tests',
+            'Senior care & pain management'
+          ]
+        },
+        {
+          id: 'geriatrics',
+          title: 'Geriatrics & End-of-Life Care',
+          description: 'Compassionate support for elderly pets and difficult decisions.',
+          longDescription: 'Calm and respectful care in the final stage of life:',
+          subServices: [
+            'Palliative care at home',
+            'Euthanasia'
+          ]
+        },
+        {
+          id: 'home-visits',
+          title: 'Home Visits & Emergency Care',
+          description: 'At-home support for wounds and urgent treatment needs.',
+          longDescription: 'Medical care during home visits also includes:',
+          subServices: [
+            'Wound care & emergency treatment'
+          ]
+        },
+        {
+          id: 'behavior',
+          title: 'Behavior',
+          description: 'Behavior guidance and support for everyday life with pets.',
+          longDescription: 'Behavior-related support includes:',
+          subServices: [
+            'Behavior counseling & cat training',
+            'Tips for stress-free pet life'
+          ]
+        }
+      ],
+      costsTitle: 'What Costs Apply?',
+      costsParagraphs: [
+        'At UrbanVet, I charge my services according to the new German Veterinary Fee Schedule (GOT, Version 2022), which has been in effect nationwide since November 22, 2022.',
+        'I place great importance on transparency and clarity. Every pet owner receives a detailed invoice, which can also be submitted to pet health insurance. Upon request, I am happy to provide advance information by phone about the typical services.'
+      ]
+    },
+    about: {
+      title: 'About me',
+      p1: 'Animals have always been an important part of my life, and I knew from an early age that I wanted to become a veterinarian.',
+      p2: 'After completing my veterinary studies in Vienna, I gained several years of experience in small animal medicine in Austria, Greece, and Germany, working in veterinary clinics, practices, and mobile veterinary services.',
+      p3: 'With UrbanVet, my mobile veterinary service for Berlin and Brandenburg, I bring the veterinary practice directly to your home. This avoids transportation stress and waiting rooms for your pet.',
+      p4: 'Home visits take place in the familiar environment of your animal, where they feel most comfortable. I take the time needed for a thorough examination and adapt each consultation and treatment individually.',
+      p5: 'For cats, I may use pheromones to create a calmer environment when needed. With dogs, I focus on a gentle, respectful, and low-stress approach tailored to each individual dog.',
+      p6: 'My professional interests also include behavioral medicine for dogs and cats. For this reason, I am currently completing additional training as a dog trainer, which allows me to also support owners with questions about training, behavior, and daily life with their dog.',
+      p7: 'With UrbanVet, you receive high-quality mobile veterinary care in Berlin and Brandenburg – professional veterinary medicine with empathy, time, and a calm approach for stress-free treatment of dogs and cats in their own home. I speak German, English and Greek.'
+    },
+    blog: {
+      title: 'UrbanVet Blog',
+      subtitle: 'Tips and insights from veterinary life and everyday care for dogs and cats.',
+      back_button: 'Back to Blog',
+      posts: [
+        { title: '5 Tips for a Healthy City Cat', date: 'October 26, 2023', summary: 'Simple ways to create a healthier, calmer life for indoor cats in the city.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'City cats benefit from routine, enrichment, climbing opportunities, and regular veterinary preventive care.')) },
+        { title: 'Preparing Your Dog for a Trip on the U-Bahn', date: 'October 15, 2023', summary: 'How to make public transport calmer and safer for your dog.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Gradual training, positive reinforcement, and good planning can make city travel easier for dogs.')) },
+        { title: 'Seasonal Allergies in Pets', date: 'September 28, 2023', summary: 'Recognizing signs of itching, skin irritation, and environmental allergies.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Seasonal allergies can affect skin, ears, and paws. Early recognition helps relieve discomfort sooner.')) }
+      ]
+    },
+    contactPage: { title: 'Get in Touch', subtitle: 'Ready to schedule a visit or have a question? Contact UrbanVet.', email: 'info@urbanvet.de', phoneLabel: 'Call us directly:' },
+    impressum: {
+      title: 'Imprint / Data Protection Policy',
+      content: `
+        <h2 class="font-bold text-2xl mt-0 mb-4">Imprint (Legal Notice)</h2>
+        <p><strong>Responsible according to § 55 Abs. 2 RStV:</strong><br>
+        Veterinary Practice UrbanVet Berlin<br>
+        Susanne Repanelis<br>
+        Fontanestraße 32<br>
+        120149 Berlin<br>
+        Germany</p>
+        <p><strong>Phone:</strong> +49 171 6494610<br>
+        <strong>E-Mail:</strong> info@urbanvet.de<br>
+        <strong>Website:</strong> www.urbanvet.de</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Professional Title & Regulatory Authority:</h3>
+        <p><strong>Professional title:</strong> Veterinarian (awarded in Austria)<br>
+        <strong>Regulatory authority:</strong> Berlin Chamber of Veterinary Surgeons, Littenstr. 108, 10179 Berlin, Germany</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Professional Regulations:</h3>
+        <p>Professional Code of the Berlin Chamber of Veterinary Surgeons<br>
+        Available at: https://www.tieraerztekammer-berlin.de/kammerrecht/11-berufsordnung.html</p>
+        <p>German Federal Veterinary Act (BTÄO)<br>
+        Available at: https://www.bundestieraerztekammer.de/tieraerzte/beruf/bundestieraerzteordnung/</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Consumer Dispute Resolution:</h3>
+        <p>The EU Commission provides an online platform for dispute resolution (ODR) regarding contractual obligations from online contracts: http://ec.europa.eu/consumers/odr/</p>
+        <p>We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+        <h2 class="font-bold text-2xl mt-10 mb-4">Data Protection Policy</h2>
+        <h3 class="font-semibold text-lg mb-2">Data Minimization</h3>
+        <p>We only collect personal data that is necessary to provide our veterinary services. Any non-essential information that could identify you is avoided.</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Storage of Personal Data & Legal Basis</h3>
+        <p>All information is used solely to fulfill the veterinary service agreement (Art. 6(1)(b) GDPR). Data that is legally required or necessary for treatment is stored only with your explicit consent (Art. 6(1)(a) GDPR) and kept only for the legally mandated period.</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Data Security</h3>
+        <p>Personal data is generally not shared with third parties. During storage, all data is protected technically and organizationally against unauthorized access, loss, or misuse.</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Access & Correction</h3>
+        <p>You have the right to access your stored personal data at any time. You can also request the correction of any inaccurate personal data (Art. 16 GDPR).</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Restriction of Processing</h3>
+        <p>You may request that the processing of your data be restricted if the data is incomplete, incorrect, you have objected, or the data is unnecessary for certain purposes—except for data required to enforce legal claims.</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Data Deletion</h3>
+        <p>You may request the immediate deletion of personal data if it is no longer necessary for the veterinary service agreement or if you have withdrawn your consent, except for data needed to enforce legal claims.</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Technical Data & Cookies</h3>
+        <p>When you visit our website, only technical information such as browser type or IP address is collected. Only essential cookies are used to ensure website functionality and comply with user interests (Art. 6(1)(f) GDPR).</p>
+      `
+    },
+    footer: { tagline: 'Calm mobile veterinary care.', legal: 'Imprint & Data Protection' }
   },
   [Language.DE]: {
-    nav: { [Page.HOME]: 'Startseite', [Page.SERVICES]: 'Leistungen', [Page.ABOUT]: 'Über Uns', [Page.BLOG]: 'Blog', [Page.CONTACT]: 'Kontakt', [Page.IMPRESSUM]: 'Impressum' },
-    home: { heroTitle: 'Mitfühlende Tiermedizin, direkt vor Ihrer Haustür.', heroSubtitle: 'Professionelle, stressfreie tierärztliche Versorgung für Ihre geliebten Haustiere im Komfort Ihres Zuhauses.', ctaButton: 'Termin vereinbaren', servicesTitle: 'Unsere Leistungen', servicesSubtitle: 'Wir bieten eine breite Palette mobiler tierärztlicher Dienste, um Ihr Haustier gesund und glücklich zu halten.', aboutTitle: 'Lernen Sie UrbanVet kennen', aboutText: React.createElement(React.Fragment, null, 'Gegründet aus der Überzeugung, dass Tierpflege persönlich und bequem sein sollte, bringt UrbanVet die Klinik zu Ihnen...') },
-    services: { title: "Unsere Mobilen Tierarzt-Leistungen", subtitle: "Umfassende Versorgung für die Bedürfnisse Ihres Haustieres, mit Komfort und Mitgefühl. Klicken Sie auf eine Kategorie, um mehr zu erfahren.", items: [ { id: 'general-medicine', title: "Allgemeinmedizin & Spezialdiagnostik", description: "Umfassende Untersuchungen und moderne Diagnostik zur Beurteilung der Gesundheit Ihres Haustieres.", longDescription: 'Wir bieten gründliche klinische Untersuchungen und nutzen fortschrittliche diagnostische Instrumente...', subServices: ['Umfassende klinische Untersuchung', 'Orthopädische Untersuchung & Lahmheitsdiagnostik', 'Neurologische Beurteilung', 'Dermatologische Untersuchung', 'Geriatrische Gesundheitschecks', 'Allergiediagnostik und -therapie', 'Blutuntersuchungen (hämatologisch & biochemisch)', 'Kotuntersuchungen (Schnelltests, externe Labordiagnostik)', 'Urologische Diagnostik (Urintests)', 'Biopsien und Probenentnahme (Haut, Feinnadelaspiration, Laborversand)'] }, { id: 'preventive-medicine', title: "Präventivmedizin & Prophylaxe", description: "Impfungen, Parasitenkontrolle und Vorsorgeprogramme zur Vorbeugung von Krankheiten.", longDescription: 'Vorsorge ist der Grundstein für ein langes und gesundes Leben...', subServices: ['Impfungen und allgemeine Gesundheitsvorsorge', 'Wellness-Programme für Senioren', 'Behandlung und Prävention von Endo- und Ektoparasiten', 'Beratung zur Floh-/Zeckenprävention', 'Entwurmungsprotokolle', 'Reisemedizin und internationale Gesundheitszeugnisse'] }, { id: 'internal-medicine', title: "Innere Medizin & Spezialkrankheiten", description: "Management komplexer Erkrankungen wie Diabetes, Nierenerkrankungen und mehr.", longDescription: 'Unser Team ist erfahren in der Diagnose und Behandlung...', subServices: ['Magen-Darm-Erkrankungen (Durchfall, Erbrechen, Pankreatitis)', 'Endokrinologie (Diabetes, Schilddrüsen- & Nebennierenerkrankungen)', 'Nephrologie (Chronische Nierenerkrankung, akutes Nierenversagen)', 'Urologie (Zystitis, Harnsteine, Inkontinenz)', 'Blutdruckmessung und Proteinurie-Screening', 'Geriatrie (Gesundheitsprogramme für Senioren, Schmerzmanagement)', 'Hämatologie & Probenentnahme für Laborversand'] }, { id: 'general-vet', title: "Allgemeine Tierärztliche Leistungen", description: "Wundversorgung, Gesundheitszeugnisse und einfühlsame Sterbebegleitung zu Hause.", longDescription: 'Über Diagnostik und Prävention hinaus bieten wir wesentliche Dienstleistungen...', subServices: ['Wundversorgung und Notfallmanagement', 'Hausapotheke gemäß der Tierärztlichen Hausapothekenverordnung (TÄHAV)', 'Ausstellung von Gesundheitszeugnissen und EU-Heimtierausweisen', 'Reiseberatung', 'Euthanasie und Palliativpflege zu Hause auf Anfrage'] }, { id: 'preventive-consultations', title: "Vorsorgemedizin & Beratungen", description: "Expertenrat zu Ernährung, Gewichtsmanagement und Parasitenprävention.", longDescription: 'Wir glauben daran, Tierhalter mit Wissen zu stärken...', subServices: ['Parasitenprävention (Flöhe, Zecken, Würmer, Reisekrankheiten)', 'Ernährungsberatung (Welpen, Senioren, spezielle Diäten, BARF)', 'Verhaltensberatung – zertifizierte Hundetrainerin (USP)', 'Gewichtsmanagement-Programme', 'Vorsorgeuntersuchungen für ältere Tiere', 'Impf- & Medikamentenerinnerungen'] }, { id: 'behaviour-nutrition', title: "Verhalten & Ernährung", description: "Beratungen bei Verhaltensproblemen und maßgeschneiderte Ernährungspläne.", longDescription: 'Ein gesundes Haustier ist sowohl körperlich als auch geistig glücklich...', subServices: ['Verhaltensmedizinische Beratungen (Angst, Aggression, Stress)', 'Katzenverhaltenstraining und Umgebungsanreicherung', 'Ernährungsberatung für alle Lebensphasen (Welpen, Senioren)', 'Diätpläne für bestimmte Krankheiten (z.B. Nieren, Allergien)', 'Anleitung zur Rohfütterung (BARF-Diäten)', 'Integrierte Verhaltenstherapie'] } ] },
-    about: { title: 'Über UrbanVet', p1: 'UrbanVet wurde von Dr. Anja Schmidt gegründet, einer Tierärztin mit über 15 Jahren Erfahrung...', p2: 'Das traditionelle Klinik-Umfeld kann für viele Haustiere und ihre Besitzer eine Quelle der Angst sein...', p3: 'Unsere Mission ist einfach: Wir bieten hochwertige, mitfühlende tierärztliche Versorgung...' },
-    blog: { title: 'UrbanVet Blog', subtitle: 'Tipps und Einblicke von unseren Tierärzten, um Ihnen bei der Pflege Ihrer Stadttiere zu helfen.', back_button: 'Zurück zum Blog', posts: [ { title: '5 Tipps für eine gesunde Stadtkatze', date: '26. Oktober 2023', summary: 'In einer Wohnung zu leben bedeutet nicht, dass Ihre Katze kein reiches und gesundes Leben führen kann...', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Das Stadtleben stellt einzigartige Herausforderungen...')) }, { title: 'Bereiten Sie Ihren Hund auf eine Fahrt mit der U-Bahn vor', date: '15. Oktober 2023', summary: 'Öffentliche Verkehrsmittel können für Hunde stressig sein...', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Die Nutzung der Berliner U-Bahn ist eine bequeme Art...')) }, { title: 'Saisonale Allergien bei Haustieren: Worauf Sie achten sollten', date: '28. September 2023', summary: 'Genau wie Menschen können auch Haustiere unter saisonalen Allergien leiden...', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Wenn sich die Jahreszeiten in Berlin ändern...')) }, { title: 'Die richtige Ernährung für Ihr Stadttier wählen', date: '5. November 2023', summary: 'Ernährung ist der Grundstein der Gesundheit...', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Ein Tiergeschäft zu betreten kann überwältigend sein...')) }, { title: 'Senioren-Tierpflege: So bleibt Ihr älterer Begleiter fit', date: '12. November 2023', summary: 'Unsere Haustiere leben länger als je zuvor...', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Dank der Fortschritte in der Tiermedizin...')) } ] },
-    contactPage: { title: 'Kontakt aufnehmen', subtitle: 'Möchten Sie einen Besuch vereinbaren oder haben Sie eine Frage? Kontaktieren Sie uns!', email: 'kontakt@urbanvet.de' },
-    impressum: { title: 'Impressum / Datenschutz', content: '<h3 class="font-semibold text-lg mb-2">Angaben gemäß § 5 TMG</h3><p>UrbanVet GmbH<br>Musterstraße 1<br>10115 Berlin</p>...' },
-    footer: { tagline: 'Moderne Tiermedizin, geliefert.', legal: 'Impressum & Datenschutz' }
+    nav: { [Page.HOME]: 'Startseite', [Page.SERVICES]: 'Leistungen', [Page.ABOUT]: 'Über Mich', [Page.BLOG]: 'Blog', [Page.CONTACT]: 'Kontakt', [Page.IMPRESSUM]: 'Impressum' },
+    home: {
+      heroTitle: 'Deine Tierärztin. Zuhause.',
+      heroSubtitle: 'Mobile Tierarztpraxis für Hunde und Katzen in Berlin und Brandenburg – ruhig, persönlich und mit Zeit für Ihr Tier.',
+      ctaButton: 'Termin vereinbaren',
+      introTitle: 'Startseite',
+      introParagraphs: [
+        'Der Weg zum Tierarzt und das Warten im Wartezimmer sind für viele Tiere sehr belastend. Katzen reagieren oft empfindlich auf fremde Umgebung.',
+        'Mit UrbanVet besucht Sie Ihre Tierärztin zu Hause. Untersuchung und Behandlung können in der vertrauten Umgebung Ihres Tieres erheblich ruhiger und entspannter ablaufen.',
+        'Ich nehme mir Zeit für gründliche Untersuchung, individuelle Beratung und eine Behandlung, die auf die Bedürfnisse Ihres Tieres abgestimmt ist.',
+        'UrbanVet bietet mobile tierärztliche Hausbesuche für Hunde und Katzen in Berlin und Brandenburg – für eine medizinische Versorgung mit Ruhe, Vertrauen und persönlicher Betreuung.'
+      ],
+      aboutTitle: 'Über Mich',
+      aboutText: 'Tiere waren schon immer ein großer Teil meines Lebens und ich wusste schon früh, dass ich Tierärztin werden möchte.'
+    },
+    services: {
+      title: 'Leistungen',
+      subtitle: 'Mobile Tierarztpraxis für Hunde und Katzen in Berlin und Brandenburg.',
+      items: [
+        {
+          id: 'general-medicine',
+          title: 'Allgemeinmedizin & spezielle Diagnostik',
+          description: 'Gründliche Untersuchung und moderne Diagnostik für eine fundierte Einschätzung.',
+          longDescription: 'Wir checken Ihr Tier gründlich und nutzen moderne Diagnosetechnik:',
+          subServices: [
+            'Allgemeine Gesundheitschecks',
+            'Orthopädie',
+            'Neurologie',
+            'Dermatologie',
+            'Blut-, Urin- und Kotuntersuchungen',
+            'Allergie-Tests und Therapie',
+            'Biopsien & Probenentnahme'
+          ]
+        },
+        {
+          id: 'preventive-medicine',
+          title: 'Vorsorge & Präventivmedizin',
+          description: 'Impfungen, Prophylaxe, Seniorenprogramme und Reisemedizin.',
+          longDescription: 'Impfungen & Gesundheitsvorsorge:',
+          subServices: [
+            'Parasiten- und Floh-/Zeckenschutz, Entwurmung',
+            'Programme für Senioren',
+            'Gesundheitszeugnisse',
+            'EU-Heimtierausweise & Reisemedizin'
+          ]
+        },
+        {
+          id: 'internal-medicine',
+          title: 'Innere Medizin',
+          description: 'Betreuung bei chronischen und internistischen Erkrankungen.',
+          longDescription: 'Untersuchung und Behandlung bei internistischen Problemen wie:',
+          subServices: [
+            'Magen-Darm-Beschwerden',
+            'Diabetes & Schilddrüsenprobleme',
+            'Nieren- und Harnwegserkrankungen',
+            'Blutdruckkontrolle & Laboruntersuchungen',
+            'Seniorenprogramme & Schmerzmanagement'
+          ]
+        },
+        {
+          id: 'geriatrics',
+          title: 'Geriatrie und der letzter Weg',
+          description: 'Einfühlsame Begleitung im Alter und am Lebensende.',
+          longDescription: 'Ruhige und respektvolle Betreuung in sensiblen Lebensphasen:',
+          subServices: [
+            'Palliativpflege zu Hause',
+            'Euthanasie'
+          ]
+        },
+        {
+          id: 'home-visits',
+          title: 'Hausbesuche & Notfallversorgung',
+          description: 'Versorgung zu Hause bei Wunden und akuten Problemen.',
+          longDescription: 'Medizinische Versorgung im Hausbesuch umfasst auch:',
+          subServices: [
+            'Wundversorgung & Notfallbehandlung'
+          ]
+        },
+        {
+          id: 'behavior',
+          title: 'Verhalten',
+          description: 'Beratung für ein entspanntes Zusammenleben mit Ihrem Tier.',
+          longDescription: 'Verhaltensbezogene Unterstützung umfasst:',
+          subServices: [
+            'Verhaltensberatung & Katzen-Training',
+            'Tipps für stressfreies Zusammenleben'
+          ]
+        }
+      ],
+      costsTitle: 'Welche Kosten fallen an?',
+      costsParagraphs: [
+        'Bei UrbanVet berechne ich meine Leistungen nach der neuen Gebührenordnung für Tierärzte (GOT, Version 2022), die seit dem 22.11.2022 bundesweit gilt.',
+        'Ich lege großen Wert auf Transparenz und Nachvollziehbarkeit. Jede Tierhalterin und jeder Tierhalter erhält selbstverständlich eine Rechnung, die auch für Tierkrankenversicherungen verwendet werden kann. Auf Wunsch gebe ich gerne vorab telefonisch Auskunft zu den üblichen Leistungen.'
+      ]
+    },
+    about: {
+      title: 'Über Mich',
+      p1: 'Tiere waren schon immer ein großer Teil meines Lebens und ich wusste schon früh, dass ich Tierärztin werden möchte. Nach meinem Studium der Veterinärmedizin in Wien konnte ich in Österreich, Griechenland und Deutschland viele Jahre wertvolle Erfahrung in der Kleintiermedizin sammeln – sowohl in Praxen und Kliniken als auch in mobilen Tierarztpraxen.',
+      p2: 'Mit UrbanVet, meiner mobilen Tierarztpraxis für Berlin und Brandenburg, bringe ich die Praxis zu Ihnen nach Hause. So vermeiden Sie den Transportstress und Wartezimmer für Ihr Tier. Ich nehme mir die Zeit, die Ihr Tier braucht, und kann jede Untersuchung und Behandlung individuell anpassen. Bei Katzen setze ich bei Bedarf Beruhigung durch Pheromone ein, um eine entspannte Atmosphäre zu schaffen. Bei Hunden achte ich auf einen ruhigen, respektvollen und angstfreien Ablauf – ganz individuell auf Ihren Hund abgestimmt.',
+      p3: 'Mein Interesse gilt der Verhaltensmedizin bei Hunden und Katzen. Deshalb bilde ich mich parallel zu meiner Tätigkeit als Tierärztin zur Hundetrainerin weiter. So kann ich Sie auch umfassend zu Hundetraining, Verhalten und Alltag mit Ihrem Vierbeiner beraten – vom Tierschutzhund bis zum Stadthund ist alles dabei.',
+      p4: 'Mit UrbanVet erhalten Sie eine hochwertige mobile Tierarztpraxis in Berlin und Brandenburg: Tiermedizin aus der Praxis, mit Ruhe, Empathie und Zeit für stressfreie, vertrauensvolle Behandlungen von Hunden und Katzen – direkt bei Ihnen zu Hause! Ich spreche Deutsch, Englisch und Griechisch.'
+    },
+    blog: {
+      title: 'UrbanVet Blog',
+      subtitle: 'Tipps und Einblicke rund um Hunde, Katzen und stressfreie Tiermedizin.',
+      back_button: 'Zurück zum Blog',
+      posts: [
+        { title: '5 Tipps für eine gesunde Stadtkatze', date: '26. Oktober 2023', summary: 'Einfache Ideen für mehr Ruhe, Bewegung und Gesundheit im Katzenalltag.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Wohnungskatzen profitieren von festen Routinen, Klettermöglichkeiten, Beschäftigung und regelmäßiger Vorsorge.')) },
+        { title: 'So wird die U-Bahn-Fahrt mit dem Hund entspannter', date: '15. Oktober 2023', summary: 'Praktische Schritte für einen ruhigeren Alltag in der Stadt.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Mit Training, guter Planung und positiver Gewöhnung können Fahrten für viele Hunde deutlich angenehmer werden.')) },
+        { title: 'Saisonale Allergien bei Haustieren', date: '28. September 2023', summary: 'Woran Sie Juckreiz, Hautprobleme und Reizungen früh erkennen.', content: React.createElement(React.Fragment, null, React.createElement('p', null, 'Saisonale Allergien zeigen sich oft an Haut, Ohren und Pfoten. Frühes Erkennen kann viel Stress ersparen.')) }
+      ]
+    },
+    contactPage: { title: 'Kontakt', subtitle: 'Möchten Sie einen Termin vereinbaren oder haben Sie eine Frage? Kontaktieren Sie UrbanVet.', email: 'info@urbanvet.de', phoneLabel: 'Rufen Sie direkt an:' },
+    impressum: {
+      title: 'Impressum / Datenschutz',
+      content: `
+        <h2 class="font-bold text-2xl mt-0 mb-4">Impressum</h2>
+        <p><strong>Verantwortlich gemäß § 55 Abs. 2 RStV:</strong><br>
+        Tierarztpraxis UrbanVet Berlin<br>
+        Susanne Repanelis<br>
+        Fontanestraße 32<br>
+        12049 Berlin</p>
+        <p><strong>Telefon:</strong> 0171 6494 610</p>
+        <p><strong>E-Mail:</strong> info@urbanvet.de<br>
+        <strong>Website:</strong> www.urbanvet.de</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Berufsbezeichnung & zuständige Aufsichtsbehörde:</h3>
+        <p><strong>Berufsbezeichnung:</strong> Tierärztin / Tierarzt (verliehen in Österreich)<br>
+        <strong>Zuständige Aufsichtsbehörde:</strong> Tierärztekammer Berlin, Littenstr. 108, 10179 Berlin</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Berufsrechtliche Regelungen:</h3>
+        <p>Berufsordnung der Tierärztekammer Berlin<br>
+        Einsehbar unter: https://www.tieraerztekammer-berlin.de/kammerrecht/11-berufsordnung.html</p>
+        <p>Bundestierärzteordnung (BTÄO)<br>
+        Einsehbar unter: https://www.bundestieraerztekammer.de/tieraerzte/beruf/bundestieraerzteordnung/</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Verbraucherstreitschlichtung:</h3>
+        <p>Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) für Vertragsangelegenheiten bereit: http://ec.europa.eu/consumers/odr/</p>
+        <p>Wir sind nicht bereit und nicht verpflichtet, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+        <h2 class="font-bold text-2xl mt-10 mb-4">Datenschutz</h2>
+        <h3 class="font-semibold text-lg mb-2">Datenvermeidung</h3>
+        <p>Grundsätzlich sind wir bemüht, alle nicht relevanten Daten zu Ihrer Person zu vermeiden, so dass keine Informationen zur Nutzeridentität gespeichert werden, die keine Relevanz in hinsichtlich vertraglicher Daten haben.</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Speicherung personenbezogener Nutzerdaten und Sicherheit</h3>
+        <p>Alle Angaben zu Ihrer Identität dienen ausschließlich der Durchführung des tierärztlichen Vertragsverhältnisses nach Art. 6 I S. 1 b DSGVO. Es werden nur gesetzlich vorgeschriebene, personenbezogene Daten mit Ihrer ausdrücklichen Einwilligung, gemäß Art. 6 I S. 1 a DSGVO, für die Dauer der gesetzlichen festgelegten Notwendigkeit gespeichert.</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Datensicherheit</h3>
+        <p>Es werden grundsätzlich keinerlei personenbezogene Daten an Dritte weitergegeben. Während der Speicherung und Auswertung sind alle personenbezogenen Daten technisch vor Verbreitung, Verlust und Zugriff von außen geschützt.</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Auskunft, Korrektur</h3>
+        <p>Sie sind berechtigt, jederzeit Auskunft über die Speicherung Ihrer Daten zu erlangen, sowie die Korrektur personenbezogener Daten gemäß Art. 16 DSGVO anzuordnen.</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Einschränkung</h3>
+        <p>Nutzer sind berechtigt, die Datenverarbeitung durch den Anbieter einzuschränken, wenn Daten inhaltlich falsch aufgenommen wurden, ein Widerspruch erfolgte oder wenn die Gesamtheit der Daten nicht notwendig ist, mit Ausnahme derer, die für die Umsetzung von Rechtsansprüchen erforderlich sind.</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Datenlöschung</h3>
+        <p>Nutzen dürfen die unverzügliche Löschung personenbezogener Daten verlangen, wenn diese nicht mehr erforderlich, im Sinne der Durchführung des tierärztlichen Vertragsverhältnisses nach Art. 6 I S. 1 b DSGVO sind oder Sie die Einwilligung widerrufen haben, mit Ausnahme der Durchsetzung von Rechtsansprüchen.</p>
+        <h3 class="font-semibold text-lg mt-6 mb-2">Technische Informationen und Cookies</h3>
+        <p>Alle bei Ihrem Websitebesuch erhobenen, technischen Daten, wie Art des genutzten Browsers und IP-Adresse werden standardisiert von der Webseite zur Auswertung genutzt, wobei ausschließlich notwendige Cookies zum Einsatz kommen, die den Interessen der User gemäß Art. 6 I S. 1 f DSGVO nicht entgegenstehen. Bei Fragen wenden Sie sich bitte an uns.</p>
+      `
+    },
+    footer: { tagline: 'Mobile Tiermedizin mit Ruhe.', legal: 'Impressum & Datenschutz' }
   }
 };
 
@@ -74,10 +362,7 @@ const ALL_POSTS = {
   [Language.DE]: TEXTS.DE.blog.posts.map((p, i) => ({ ...p, id: `post-de-${i}`, imageUrl: `https://picsum.photos/seed/post${i}/1200/800` }))
 };
 const NAV_LINKS = [{ page: Page.HOME }, { page: Page.SERVICES }, { page: Page.ABOUT }, { page: Page.BLOG }];
-// ========= END: constants.js =========
 
-
-// ========= START: App.js =========
 const { useState, useEffect } = React;
 
 const SectionDivider = () => React.createElement('div', {
@@ -94,73 +379,92 @@ const ServiceCard = ({ service }) => React.createElement('div', { className: "bg
 
 const BlogPostCard = ({ post, onClick }) => React.createElement('div', { onClick: onClick, className: "bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300 group border cursor-pointer" }, React.createElement('img', { src: post.imageUrl, alt: post.title, className: "w-full h-48 object-cover" }), React.createElement('div', { className: "p-6" }, React.createElement('p', { className: "text-sm text-gray-500 mb-1" }, post.date), React.createElement('h3', { className: "text-xl font-bold mb-2 text-gray-900 group-hover:text-red-700 transition-colors" }, post.title), React.createElement('p', { className: "text-gray-700" }, post.summary)));
 
-const HomePage = ({ content, onNavigate, services, language }) => React.createElement('div', null, 
-    React.createElement('section', { className: "text-center py-20 lg:py-32 px-4 bg-white" }, 
-        React.createElement('div', { className: "max-w-4xl mx-auto flex flex-col items-center" }, 
+const HomePage = ({ content, onNavigate, services, language }) => React.createElement('div', null,
+    React.createElement('section', { className: "text-center py-20 lg:py-32 px-4 bg-white" },
+        React.createElement('div', { className: "max-w-4xl mx-auto flex flex-col items-center" },
             React.createElement('img', { src: "logo-main.png", alt: "UrbanVet Logo", className: "w-3/4 max-w-lg h-auto mb-4" }),
-            React.createElement('h1', { className: "text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight" }, content.home.heroTitle), 
-            React.createElement('p', { className: "text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto" }, content.home.heroSubtitle), 
+            React.createElement('h1', { className: "text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight" }, content.home.heroTitle),
+            React.createElement('p', { className: "text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto" }, content.home.heroSubtitle),
             React.createElement('button', { onClick: () => onNavigate(Page.CONTACT), className: "bg-red-700 text-white font-bold py-3 px-8 rounded-full hover:bg-red-800 transition-colors text-lg shadow-lg hover:shadow-xl transform hover:scale-105" }, content.home.ctaButton)
         )
-    ), 
-    React.createElement(SectionDivider, null), 
-    React.createElement('section', { id: "services", className: "py-16 lg:py-24 bg-white" }, 
-        React.createElement('div', { className: "max-w-7xl mx-auto px-4" }, 
-            React.createElement('h2', { className: "text-3xl lg:text-4xl font-bold text-center mb-2 text-gray-900" }, content.home.servicesTitle), 
-            React.createElement('p', { className: "text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto" }, content.home.servicesSubtitle), 
-            React.createElement('div', { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-8" }, 
+    ),
+    React.createElement(SectionDivider, null),
+    React.createElement('section', { className: "py-16 lg:py-24 bg-white" },
+        React.createElement('div', { className: "max-w-4xl mx-auto px-4 text-center" },
+            React.createElement('h2', { className: "text-3xl lg:text-4xl font-bold text-gray-900 mb-8" }, content.home.introTitle),
+            React.createElement('div', { className: "prose prose-lg max-w-none text-gray-700 mx-auto" },
+                content.home.introParagraphs.map((paragraph, index) => React.createElement('p', { key: index, className: "mb-6" }, paragraph))
+            ),
+            React.createElement('button', { onClick: () => onNavigate(Page.CONTACT), className: "mt-8 bg-red-700 text-white font-bold py-3 px-8 rounded-full hover:bg-red-800 transition-colors text-lg shadow-lg hover:shadow-xl transform hover:scale-105" }, content.home.ctaButton)
+        )
+    ),
+    React.createElement(SectionDivider, null),
+    React.createElement('section', { id: "services", className: "py-16 lg:py-24 bg-white" },
+        React.createElement('div', { className: "max-w-7xl mx-auto px-4" },
+            React.createElement('h2', { className: "text-3xl lg:text-4xl font-bold text-center mb-2 text-gray-900" }, content.services.title),
+            React.createElement('p', { className: "text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto" }, content.services.subtitle),
+            React.createElement('div', { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-8" },
                 services.map(service => React.createElement('div', { key: service.id, onClick: () => onNavigate(Page.SERVICES, service.id) }, React.createElement(ServiceCard, { service: service })))
             )
         )
-    ), 
-    React.createElement(SectionDivider, null), 
-    React.createElement('section', { className: "py-16 lg:py-24 bg-white" }, 
-        React.createElement('div', { className: "max-w-4xl mx-auto px-4 text-center" }, 
-            React.createElement('h2', { className: "text-3xl lg:text-4xl font-bold text-gray-900 mb-4" }, content.home.aboutTitle), 
-            React.createElement('div', { className: "prose prose-lg text-gray-700 mx-auto" }, content.home.aboutText), 
-            React.createElement('button', { onClick: () => onNavigate(Page.ABOUT), className: "mt-8 text-red-700 font-semibold hover:underline" }, language === Language.DE ? 'Mehr über uns erfahren →' : 'Learn More About Us →')
+    ),
+    React.createElement(SectionDivider, null),
+    React.createElement('section', { className: "py-16 lg:py-24 bg-white" },
+        React.createElement('div', { className: "max-w-4xl mx-auto px-4 text-center" },
+            React.createElement('h2', { className: "text-3xl lg:text-4xl font-bold text-gray-900 mb-4" }, content.home.aboutTitle),
+            React.createElement('div', { className: "prose prose-lg text-gray-700 mx-auto" }, React.createElement('p', null, content.home.aboutText)),
+            React.createElement('button', { onClick: () => onNavigate(Page.ABOUT), className: "mt-8 text-red-700 font-semibold hover:underline" }, language === Language.DE ? 'Mehr über mich erfahren →' : 'Learn more about me →')
         )
     )
 );
 
-const ServicesPage = ({ content, services }) => React.createElement('div', { className: "min-h-screen bg-white" }, 
-    React.createElement('div', { className: "max-w-7xl mx-auto px-4" }, 
-        React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-center mb-4 text-gray-900 pt-8 lg:pt-12" }, content.title), 
-        React.createElement('p', { className: "text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto" }, content.subtitle), 
-        React.createElement('div', null, 
-            services.map((service, index) => React.createElement(React.Fragment, { key: service.id }, 
-                React.createElement('section', { id: service.id, className: "scroll-mt-24 py-8" }, 
-                    React.createElement('div', { className: "flex flex-col sm:flex-row items-start sm:space-x-6" }, 
-                        React.createElement('div', { className: "flex-shrink-0 mb-4 sm:mb-0" }, service.icon), 
-                        React.createElement('div', null, 
-                            React.createElement('h2', { className: "text-3xl font-bold text-gray-900 mb-2" }, service.title), 
+const ServicesPage = ({ content, services }) => React.createElement('div', { className: "min-h-screen bg-white" },
+    React.createElement('div', { className: "max-w-7xl mx-auto px-4" },
+        React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-center mb-4 text-gray-900 pt-8 lg:pt-12" }, content.title),
+        React.createElement('p', { className: "text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto" }, content.subtitle),
+        React.createElement('div', null,
+            services.map((service, index) => React.createElement(React.Fragment, { key: service.id },
+                React.createElement('section', { id: service.id, className: "scroll-mt-24 py-8" },
+                    React.createElement('div', { className: "flex flex-col sm:flex-row items-start sm:space-x-6" },
+                        React.createElement('div', { className: "flex-shrink-0 mb-4 sm:mb-0" }, service.icon),
+                        React.createElement('div', null,
+                            React.createElement('h2', { className: "text-3xl font-bold text-gray-900 mb-2" }, service.title),
                             React.createElement('p', { className: "text-lg text-gray-600 mb-4 prose max-w-none" }, service.longDescription)
                         )
-                    ), 
-                    React.createElement('div', { className: "mt-4" }, 
-                        React.createElement('ul', { className: "grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4" }, 
-                            service.subServices.map((item, subIndex) => React.createElement('li', { key: subIndex, className: "flex items-start" }, 
-                                React.createElement('svg', { className: "w-6 h-6 text-red-700 mr-3 flex-shrink-0 mt-1", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, 
+                    ),
+                    React.createElement('div', { className: "mt-4" },
+                        React.createElement('ul', { className: "grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4" },
+                            service.subServices.map((item, subIndex) => React.createElement('li', { key: subIndex, className: "flex items-start" },
+                                React.createElement('svg', { className: "w-6 h-6 text-red-700 mr-3 flex-shrink-0 mt-1", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" },
                                     React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M5 13l4 4L19 7" })
-                                ), 
+                                ),
                                 React.createElement('span', { className: "text-gray-700 text-lg" }, item)
                             ))
                         )
                     )
-                ), 
+                ),
                 index < services.length - 1 && React.createElement(SectionDivider, null)
             ))
+        ),
+        React.createElement(SectionDivider, null),
+        React.createElement('section', { className: "py-8 pb-16" },
+            React.createElement('div', { className: "max-w-4xl" },
+                React.createElement('h2', { className: "text-3xl font-bold text-gray-900 mb-6" }, content.costsTitle),
+                React.createElement('div', { className: "prose prose-lg max-w-none text-gray-700" },
+                    content.costsParagraphs.map((paragraph, index) => React.createElement('p', { key: index }, paragraph))
+                )
+            )
         )
     )
 );
 
-const AboutPage = ({ content }) => React.createElement('div', { className: "py-16 lg:py-24 min-h-screen bg-white" }, React.createElement('div', { className: "max-w-4xl mx-auto px-4" }, React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-gray-900 mb-6 text-center" }, content.about.title), React.createElement(SectionDivider, null), React.createElement('div', { className: "grid md:grid-cols-3 gap-12 items-center mt-8" }, React.createElement('div', { className: "md:col-span-1" }, React.createElement('img', { src: "vet_portrait.jpg", alt: "Dr. Anja Schmidt", className: "rounded-lg shadow-xl w-full h-auto object-cover" })), React.createElement('div', { className: "md:col-span-2" }, React.createElement('div', { className: "prose prose-lg max-w-none text-gray-700" }, React.createElement('p', null, content.about.p1), React.createElement('p', null, content.about.p2), React.createElement('p', null, content.about.p3))))));
+const AboutPage = ({ content, language }) => React.createElement('div', { className: "py-16 lg:py-24 min-h-screen bg-white" }, React.createElement('div', { className: "max-w-4xl mx-auto px-4" }, React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-gray-900 mb-6 text-center" }, content.about.title), React.createElement(SectionDivider, null), React.createElement('div', { className: "grid md:grid-cols-3 gap-12 items-center mt-8" }, React.createElement('div', { className: "md:col-span-1" }, React.createElement('img', { src: "vet_portrait.jpg", alt: language === Language.DE ? 'Susanne Repanelis' : 'Susanne Repanelis', className: "rounded-lg shadow-xl w-full h-auto object-cover" })), React.createElement('div', { className: "md:col-span-2" }, React.createElement('div', { className: "prose prose-lg max-w-none text-gray-700" }, Object.keys(content.about).filter(key => key !== 'title').map((key) => React.createElement('p', { key }, content.about[key])))))));
 
 const BlogPage = ({ content, posts, onViewPost }) => React.createElement('div', { className: "py-16 lg:py-24 min-h-screen bg-white" }, React.createElement('div', { className: "max-w-6xl mx-auto px-4" }, React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-center mb-4 text-gray-900" }, content.blog.title), React.createElement('p', { className: "text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto" }, content.blog.subtitle), React.createElement(SectionDivider, null), React.createElement('div', { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8" }, posts.map(post => React.createElement(BlogPostCard, { key: post.id, post: post, onClick: () => onViewPost(post) })))));
 
 const BlogPostPage = ({ post, onBack, backButtonText }) => React.createElement('div', { className: "py-16 lg:py-24 bg-white min-h-screen" }, React.createElement('div', { className: "max-w-4xl mx-auto px-4" }, React.createElement('button', { onClick: onBack, className: "text-red-700 font-semibold hover:underline mb-8" }, `← ${backButtonText}`), React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight" }, post.title), React.createElement('p', { className: "text-lg text-gray-500 mb-8" }, post.date), React.createElement('img', { src: post.imageUrl, alt: post.title, className: "w-full h-auto max-h-[500px] object-cover rounded-lg shadow-lg mb-8" }), React.createElement('div', { className: "prose prose-lg max-w-none text-gray-700" }, post.content)));
 
-const ContactPage = ({ content }) => React.createElement('div', { className: "py-16 lg:py-24 min-h-screen bg-white flex items-center justify-center" }, React.createElement('div', { className: "max-w-4xl mx-auto px-4 text-center" }, React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-gray-900 mb-4" }, content.contactPage.title), React.createElement('p', { className: "text-lg text-gray-600 mb-8 max-w-2xl mx-auto" }, content.contactPage.subtitle), React.createElement(SectionDivider, null), React.createElement('div', { className: "my-8" }, React.createElement('a', { href: "tel:+491743995177" }, React.createElement('img', { src: "phone_number.png", alt: "Contact phone number", className: "max-w-md w-full mx-auto h-auto cursor-pointer transform hover:scale-105 transition-transform" }))), React.createElement('p', { className: "text-lg text-gray-600 mb-4" }, 'Or send us an email:'), React.createElement('a', { href: `mailto:${content.contactPage.email}`, className: "inline-block bg-red-700 text-white font-bold py-3 px-8 rounded-full hover:bg-red-800 transition-colors text-lg shadow-lg hover:shadow-xl transform hover:scale-105" }, content.contactPage.email)));
+const ContactPage = ({ content }) => React.createElement('div', { className: "py-16 lg:py-24 min-h-screen bg-white flex items-center justify-center" }, React.createElement('div', { className: "max-w-4xl mx-auto px-4 text-center" }, React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-gray-900 mb-4" }, content.contactPage.title), React.createElement('p', { className: "text-lg text-gray-600 mb-8 max-w-2xl mx-auto" }, content.contactPage.subtitle), React.createElement(SectionDivider, null), React.createElement('div', { className: "my-8" }, React.createElement('p', { className: "text-lg text-gray-600 mb-4" }, content.contactPage.phoneLabel), React.createElement('a', { href: "tel:+491716494610", className: "inline-block bg-red-700 text-white font-bold py-3 px-8 rounded-full hover:bg-red-800 transition-colors text-lg shadow-lg hover:shadow-xl transform hover:scale-105" }, '+49 171 6494610')), React.createElement('p', { className: "text-lg text-gray-600 mb-4" }, 'E-Mail:'), React.createElement('a', { href: `mailto:${content.contactPage.email}`, className: "inline-block bg-red-700 text-white font-bold py-3 px-8 rounded-full hover:bg-red-800 transition-colors text-lg shadow-lg hover:shadow-xl transform hover:scale-105" }, content.contactPage.email)));
 
 const ImpressumPage = ({ content }) => React.createElement('div', { className: "py-16 lg:py-24 min-h-screen bg-white" }, React.createElement('div', { className: "max-w-4xl mx-auto px-4" }, React.createElement('h1', { className: "text-4xl lg:text-5xl font-bold text-gray-900 mb-8" }, content.impressum.title), React.createElement(SectionDivider, null), React.createElement('div', { className: "prose prose-lg max-w-none text-gray-700 mt-8", dangerouslySetInnerHTML: { __html: content.impressum.content } })));
 
@@ -170,7 +474,7 @@ function App() {
   const [currentPost, setCurrentPost] = useState(null);
   const [targetAnchor, setTargetAnchor] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const content = TEXTS[language];
   const allServices = ALL_SERVICES[language];
   const allPosts = ALL_POSTS[language];
@@ -180,13 +484,13 @@ function App() {
     setTargetAnchor(anchor || null);
     if (!anchor) { window.scrollTo(0, 0); }
   };
-  
+
   const handleViewPost = (post) => {
     setCurrentPost(post);
     setCurrentPage(Page.BLOG_POST);
     window.scrollTo(0, 0);
   };
-  
+
   const handleMobileNav = (page, anchor) => {
     handleNavigate(page, anchor);
     setIsMenuOpen(false);
@@ -194,22 +498,26 @@ function App() {
 
   useEffect(() => {
     if (currentPage === Page.SERVICES && targetAnchor) {
-        const element = document.getElementById(targetAnchor);
-        if (element) {
-            const headerOffset = 80;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-            setTargetAnchor(null);
-        }
+      const element = document.getElementById(targetAnchor);
+      if (element) {
+        const headerOffset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        setTargetAnchor(null);
+      }
     }
   }, [currentPage, targetAnchor]);
+
+  useEffect(() => {
+    document.documentElement.lang = language.toLowerCase();
+  }, [language]);
 
   const renderPage = () => {
     switch (currentPage) {
       case Page.HOME: return React.createElement(HomePage, { content, onNavigate: handleNavigate, services: allServices, language });
       case Page.SERVICES: return React.createElement(ServicesPage, { content: content.services, services: allServices });
-      case Page.ABOUT: return React.createElement(AboutPage, { content });
+      case Page.ABOUT: return React.createElement(AboutPage, { content, language });
       case Page.BLOG: return React.createElement(BlogPage, { content, posts: allPosts, onViewPost: handleViewPost });
       case Page.BLOG_POST: return currentPost ? React.createElement(BlogPostPage, { post: currentPost, onBack: () => handleNavigate(Page.BLOG), backButtonText: content.blog.back_button }) : React.createElement(BlogPage, { content, posts: allPosts, onViewPost: handleViewPost });
       case Page.CONTACT: return React.createElement(ContactPage, { content });
@@ -217,19 +525,16 @@ function App() {
       default: return React.createElement(HomePage, { content, onNavigate: handleNavigate, services: allServices, language });
     }
   };
-  
-  useEffect(() => { document.documentElement.lang = language.toLowerCase(); }, [language]);
 
   return (
     React.createElement('div', { className: "bg-white text-gray-800 font-sans" },
       React.createElement('header', { className: "fixed top-0 left-0 right-0 bg-white shadow-md z-50 h-20 flex items-center" },
         React.createElement('nav', { className: "container mx-auto px-4 flex justify-between items-center w-full" },
-          // Desktop Nav
           React.createElement('div', { className: "hidden md:flex w-full items-center" },
-            React.createElement('div', { className: "flex-1 flex justify-start" }, 
-                React.createElement('div', { className: "cursor-pointer", onClick: () => handleNavigate(Page.HOME) },
-                    React.createElement('img', { src: 'logo-small.png', alt: 'UrbanVet Logo', className: 'h-16 w-auto' })
-                )
+            React.createElement('div', { className: "flex-1 flex justify-start" },
+              React.createElement('div', { className: "cursor-pointer", onClick: () => handleNavigate(Page.HOME) },
+                React.createElement('img', { src: 'logo-small.png', alt: 'UrbanVet Logo', className: 'h-16 w-auto' })
+              )
             ),
             React.createElement('div', { className: "flex-shrink-0" }, React.createElement('button', { onClick: () => handleNavigate(Page.CONTACT), className: "bg-red-700 text-white font-bold py-2 px-6 rounded-full hover:bg-red-800 transition-colors text-lg shadow-md hover:shadow-lg transform hover:scale-105" }, content.nav[Page.CONTACT])),
             React.createElement('div', { className: "flex-1 flex justify-end items-center space-x-4" },
@@ -240,12 +545,11 @@ function App() {
               )
             )
           ),
-          // Mobile Nav
           React.createElement('div', { className: "md:hidden w-full flex items-center justify-between" },
-            React.createElement('div', { className: "flex-1 flex justify-start" }, 
-                React.createElement('div', { className: "cursor-pointer", onClick: () => handleNavigate(Page.HOME) },
-                    React.createElement('img', { src: 'logo-small.png', alt: 'UrbanVet Logo', className: 'h-16 w-auto' })
-                )
+            React.createElement('div', { className: "flex-1 flex justify-start" },
+              React.createElement('div', { className: "cursor-pointer", onClick: () => handleNavigate(Page.HOME) },
+                React.createElement('img', { src: 'logo-small.png', alt: 'UrbanVet Logo', className: 'h-16 w-auto' })
+              )
             ),
             React.createElement('div', { className: "flex-shrink-0" }, React.createElement('button', { onClick: () => handleNavigate(Page.CONTACT), className: "bg-red-700 text-white font-bold py-2 px-5 rounded-full hover:bg-red-800 transition-colors text-base shadow-md" }, content.nav[Page.CONTACT])),
             React.createElement('div', { className: "flex-1 flex justify-end" },
@@ -256,7 +560,6 @@ function App() {
           )
         )
       ),
-      // Mobile Menu Panel
       React.createElement('div', { className: `fixed top-0 right-0 h-full w-full bg-white z-50 transform menu-panel ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}` },
         React.createElement('div', { className: "flex justify-end p-4" },
           React.createElement('button', { onClick: () => setIsMenuOpen(false), className: "text-gray-700" },
@@ -285,252 +588,10 @@ function App() {
     )
   );
 }
-// ========= END: App.js =========
 
-
-// ========= START: index.js =========
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(React.createElement(React.StrictMode, null, React.createElement(App, null)));
-// ========= END: index.js =========
-
     </script>
 </body>
-</html>          <svg
-            viewBox="0 0 834 690"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="undraw_dev_productivity_umsq 1" clip-path="url(#clip0)">
-              <g id="man">
-                <path
-                  id="Vector"
-                  d="M435.922 191.941C476.534 191.941 509.458 159.018 509.458 118.405C509.458 77.7923 476.534 44.869 435.922 44.869C395.309 44.869 362.385 77.7923 362.385 118.405C362.385 159.018 395.309 191.941 435.922 191.941Z"
-                  fill="#A0616A"
-                />
-                <path
-                  id="Vector_2"
-                  d="M381.036 155.173C381.036 155.173 394.891 259.616 373.576 271.339C352.261 283.062 500.399 284.128 500.399 284.128C500.399 284.128 467.361 193.54 482.281 165.831L381.036 155.173Z"
-                  fill="#A0616A"
-                />
-                <path
-                  id="Vector_3"
-                  d="M608.57 284.656L596.25 340.756L570.2 459.446L569.42 465.946L560.43 541.196L554.45 591.186L550.44 624.766C526.06 637.296 508.39 645.946 508.39 645.946C508.39 645.946 506.87 638.326 504.42 628.576C487.31 633.706 455.65 642.216 428.82 643.916C438.59 654.806 443.08 665.036 436.99 672.586C418.61 695.346 342.73 647.666 316.19 629.886C315.572 634.143 315.338 638.447 315.49 642.746L295.18 627.126L297.19 591.186L300.58 530.376L304.84 454.116C303.497 450.851 302.371 447.5 301.47 444.086C295.25 421.966 287.7 377.796 281.91 340.756C277.25 310.946 273.75 285.756 273.01 280.396C272.91 279.696 272.86 279.336 272.86 279.336L385.29 229.656C393.28 248.186 430.59 253.756 430.59 253.756C461.5 251.626 485.73 235.326 485.73 235.326L608.57 284.656Z"
-                  fill="#D0CDE1"
-                />
-                <path
-                  id="Vector_4"
-                  d="M374.746 48.8468L360.997 43.3423C360.997 43.3423 389.746 11.6915 429.744 14.4439L418.494 2.05865C418.494 2.05865 445.993 -8.95021 470.992 19.9482C484.134 35.1394 499.339 52.996 508.817 73.1112H523.542L517.396 86.643L538.906 100.175L516.828 97.7442C518.144 105.154 518.346 112.719 517.428 120.189C516.48 127.661 512.667 134.473 506.793 139.187C506.793 139.187 489.741 103.891 489.741 98.387V112.148C489.741 112.148 475.992 99.7631 475.992 91.5065L468.492 101.139L464.742 86.0019L418.494 101.139L425.994 88.7543L397.245 92.8826L408.495 77.7452C408.495 77.7452 375.997 95.6348 374.746 110.772C373.497 125.909 363.984 140.253 363.984 140.253C363.984 140.253 338.498 69.4885 374.746 48.8468Z"
-                  fill="#2F2E41"
-                />
-                <g id="rightHand">
-                  <path
-                    id="Vector_5"
-                    d="M516.92 624.636C516.92 624.636 512.16 626.266 504.42 628.576C487.31 633.706 455.65 642.216 428.82 643.916C405.72 645.396 386.2 641.836 382.63 626.766C381.1 620.286 383.27 614.956 388 610.576C402.12 597.486 439 592.796 468.25 591.186C476.51 590.736 484.15 590.526 490.51 590.446C501.31 590.306 508.39 590.526 508.39 590.526L508.56 591.186L516.92 624.636Z"
-                    fill="#A0616A"
-                  />
-                  <path
-                    id="Vector_6"
-                    d="M688.5 542.566C681.01 550.686 662.45 562.916 639.95 576.156C631.58 581.076 622.67 586.146 613.58 591.186C591.89 603.216 569.18 615.136 550.44 624.766C526.06 637.296 508.39 645.946 508.39 645.946C508.39 645.946 506.87 638.326 504.42 628.576C501.14 615.526 496.2 598.656 491.05 591.186C490.87 590.926 490.69 590.686 490.51 590.446C489.01 588.476 487.5 587.326 486.01 587.326L560.43 541.196L592.59 521.256L569.42 465.946L540.36 396.566L557.9 340.756L575.53 284.656H608.57C608.57 284.656 619.51 308.536 633.5 341.836C635.59 346.816 637.75 352.006 639.95 357.366C668.73 427.366 704.61 525.116 688.5 542.566Z"
-                    fill="#D0CDE1"
-                  />
-                </g>
-                <g id="leftHand">
-                  <path
-                    id="Vector_7"
-                    d="M436.99 672.586C418.61 695.346 342.73 647.666 316.19 629.886C310.41 626.016 306.97 623.566 306.97 623.566L331.25 591.186L338.94 580.936C338.94 580.936 345.82 584.586 355.99 590.526C356.36 590.746 356.73 590.966 357.11 591.186C365.88 596.336 376.89 603.066 388 610.576C403.33 620.946 418.83 632.776 428.82 643.916C438.59 654.806 443.08 665.036 436.99 672.586Z"
-                    fill="#A0616A"
-                  />
-                  <path
-                    id="Vector_8"
-                    d="M355.99 590.526C353.276 590.516 350.567 590.736 347.89 591.186C324.9 595.136 318.12 615.946 316.19 629.886C315.572 634.143 315.338 638.447 315.49 642.746L295.18 627.126L287.78 621.436C269.97 615.226 254.1 604.196 240.34 591.186C228.403 579.7 217.695 567.001 208.39 553.296C199.122 539.788 190.86 525.616 183.67 510.896C181.664 506.788 180.586 502.29 180.512 497.719C180.437 493.148 181.369 488.617 183.24 484.446L208.39 428.396L245.15 346.476C245.42 344.526 245.717 342.619 246.04 340.756C253.33 298.956 272.86 280.396 272.86 280.396H287.78L297.76 340.756L310.16 415.746L301.47 444.086L281.39 509.536L300.58 530.376L355.99 590.526Z"
-                    fill="#D0CDE1"
-                  />
-                </g>
-                <path
-                  id="Vector_9"
-                  d="M372.877 415.806L385.631 430.687C390.37 429.783 395.319 428.721 400.416 427.529L396.752 415.806L405.71 426.256C459.707 412.976 526.637 387.155 526.637 387.155C526.637 387.155 454.38 392.453 400.428 380.666C376.558 375.451 351.998 387.284 342.202 409.669C336.509 422.679 337.403 433.952 357.596 433.952C364.419 433.835 371.224 433.195 377.949 432.037L372.877 415.806Z"
-                  fill="#6C63FF"
-                />
-              </g>
-              <g id="allOther">
-                <path
-                  id="Vector_10"
-                  d="M663.65 660.386V666.456C663.654 668.122 663.345 669.774 662.74 671.326C662.472 672.018 662.147 672.687 661.77 673.326C660.579 675.327 658.887 676.983 656.863 678.133C654.838 679.283 652.549 679.887 650.22 679.886H203.67C201.342 679.887 199.053 679.283 197.028 678.133C195.003 676.983 193.312 675.327 192.12 673.326C191.743 672.687 191.419 672.018 191.15 671.326C190.546 669.774 190.237 668.122 190.24 666.456V660.386C190.24 658.622 190.587 656.876 191.262 655.246C191.936 653.616 192.926 652.136 194.173 650.889C195.42 649.641 196.901 648.652 198.53 647.977C200.16 647.303 201.907 646.956 203.67 646.956H229.41V644.126C229.41 644.053 229.425 643.98 229.453 643.912C229.481 643.844 229.522 643.782 229.574 643.73C229.626 643.678 229.688 643.637 229.756 643.608C229.824 643.58 229.897 643.566 229.97 643.566H243.4C243.474 643.566 243.547 643.58 243.615 643.608C243.683 643.637 243.745 643.678 243.797 643.73C243.849 643.782 243.89 643.844 243.918 643.912C243.946 643.98 243.96 644.053 243.96 644.126V646.956H252.35V644.126C252.35 644.053 252.365 643.98 252.393 643.912C252.421 643.844 252.462 643.782 252.514 643.73C252.566 643.678 252.628 643.637 252.696 643.608C252.764 643.58 252.837 643.566 252.91 643.566H266.34C266.414 643.566 266.487 643.58 266.555 643.608C266.623 643.637 266.684 643.678 266.736 643.73C266.789 643.782 266.83 643.844 266.858 643.912C266.886 643.98 266.9 644.053 266.9 644.126V646.956H275.3V644.126C275.3 644.053 275.315 643.98 275.343 643.912C275.371 643.844 275.412 643.782 275.464 643.73C275.516 643.678 275.578 643.637 275.646 643.608C275.714 643.58 275.787 643.566 275.86 643.566H289.29C289.364 643.566 289.437 643.58 289.505 643.608C289.573 643.637 289.634 643.678 289.687 643.73C289.739 643.782 289.78 643.844 289.808 643.912C289.836 643.98 289.85 644.053 289.85 644.126V646.956H298.24V644.126C298.24 644.053 298.255 643.98 298.283 643.912C298.311 643.844 298.352 643.782 298.404 643.73C298.456 643.678 298.518 643.637 298.586 643.608C298.654 643.58 298.727 643.566 298.8 643.566H312.23C312.304 643.566 312.377 643.58 312.445 643.608C312.513 643.637 312.574 643.678 312.626 643.73C312.679 643.782 312.72 643.844 312.748 643.912C312.776 643.98 312.79 644.053 312.79 644.126V646.956H321.18V644.126C321.18 644.053 321.195 643.98 321.223 643.912C321.251 643.844 321.292 643.782 321.344 643.73C321.396 643.678 321.458 643.637 321.526 643.608C321.594 643.58 321.667 643.566 321.74 643.566H335.17C335.244 643.566 335.317 643.58 335.385 643.608C335.453 643.637 335.514 643.678 335.566 643.73C335.619 643.782 335.66 643.844 335.688 643.912C335.716 643.98 335.73 644.053 335.73 644.126V646.956H344.13V644.126C344.13 644.053 344.145 643.98 344.173 643.912C344.201 643.844 344.242 643.782 344.294 643.73C344.346 643.678 344.408 643.637 344.476 643.608C344.544 643.58 344.617 643.566 344.69 643.566H358.12C358.194 643.566 358.267 643.58 358.335 643.608C358.403 643.637 358.464 643.678 358.516 643.73C358.569 643.782 358.61 643.844 358.638 643.912C358.666 643.98 358.68 644.053 358.68 644.126V646.956H367.07V644.126C367.07 644.053 367.085 643.98 367.113 643.912C367.141 643.844 367.182 643.782 367.234 643.73C367.286 643.678 367.348 643.637 367.416 643.608C367.484 643.58 367.557 643.566 367.63 643.566H472.83C472.904 643.566 472.977 643.58 473.045 643.608C473.113 643.637 473.174 643.678 473.227 643.73C473.279 643.782 473.32 643.844 473.348 643.912C473.376 643.98 473.39 644.053 473.39 644.126V646.956H481.79V644.126C481.79 644.053 481.805 643.98 481.833 643.912C481.861 643.844 481.902 643.782 481.954 643.73C482.006 643.678 482.068 643.637 482.136 643.608C482.204 643.58 482.277 643.566 482.35 643.566H495.78C495.928 643.568 496.07 643.627 496.175 643.732C496.279 643.836 496.339 643.978 496.34 644.126V646.956H504.73V644.126C504.73 644.053 504.745 643.98 504.773 643.912C504.801 643.844 504.842 643.782 504.894 643.73C504.946 643.678 505.008 643.637 505.076 643.608C505.144 643.58 505.217 643.566 505.29 643.566H518.72C518.794 643.566 518.867 643.58 518.935 643.608C519.003 643.637 519.065 643.678 519.117 643.73C519.169 643.782 519.21 643.844 519.238 643.912C519.266 643.98 519.28 644.053 519.28 644.126V646.956H527.67V644.126C527.67 644.053 527.685 643.98 527.713 643.912C527.741 643.844 527.782 643.782 527.834 643.73C527.886 643.678 527.948 643.637 528.016 643.608C528.084 643.58 528.157 643.566 528.23 643.566H541.66C541.734 643.566 541.807 643.58 541.875 643.608C541.943 643.637 542.005 643.678 542.057 643.73C542.109 643.782 542.15 643.844 542.178 643.912C542.206 643.98 542.22 644.053 542.22 644.126V646.956H550.62V644.126C550.62 644.053 550.635 643.98 550.663 643.912C550.691 643.844 550.732 643.782 550.784 643.73C550.836 643.678 550.898 643.637 550.966 643.608C551.034 643.58 551.107 643.566 551.18 643.566H564.61C564.757 643.568 564.898 643.628 565.001 643.733C565.104 643.838 565.161 643.979 565.16 644.126V646.956H573.56V644.126C573.56 644.053 573.575 643.98 573.603 643.912C573.631 643.844 573.672 643.782 573.724 643.73C573.776 643.678 573.838 643.637 573.906 643.608C573.974 643.58 574.047 643.566 574.12 643.566H587.55C587.624 643.566 587.697 643.58 587.765 643.608C587.833 643.637 587.895 643.678 587.947 643.73C587.999 643.782 588.04 643.844 588.068 643.912C588.096 643.98 588.111 644.053 588.11 644.126V646.956H596.5V644.126C596.5 644.053 596.515 643.98 596.543 643.912C596.571 643.844 596.612 643.782 596.664 643.73C596.716 643.678 596.778 643.637 596.846 643.608C596.914 643.58 596.987 643.566 597.06 643.566H610.49C610.564 643.566 610.637 643.58 610.705 643.608C610.773 643.637 610.835 643.678 610.887 643.73C610.939 643.782 610.98 643.844 611.008 643.912C611.036 643.98 611.051 644.053 611.05 644.126V646.956H650.22C651.984 646.956 653.731 647.303 655.36 647.977C656.99 648.652 658.471 649.641 659.718 650.889C660.965 652.136 661.954 653.616 662.629 655.246C663.304 656.876 663.651 658.622 663.65 660.386Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_11"
-                  d="M833.5 671.326H60.5002V673.326H833.5V671.326Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_12"
-                  d="M627.695 404.757H461.252V401.326H385.78V404.757H218.651C215.665 404.757 212.801 405.943 210.69 408.054C208.579 410.166 207.392 413.029 207.392 416.015V643.927C207.392 646.913 208.578 649.776 210.69 651.888C212.801 653.999 215.665 655.185 218.651 655.185H627.695C630.68 655.185 633.544 653.999 635.656 651.888C637.767 649.776 638.953 646.913 638.953 643.927V416.015C638.953 414.537 638.662 413.073 638.096 411.707C637.53 410.341 636.701 409.1 635.656 408.054C634.61 407.009 633.369 406.179 632.003 405.614C630.637 405.048 629.173 404.757 627.695 404.757Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_13"
-                  d="M108.446 661.223H80.446V689.223H108.446V661.223Z"
-                  fill="#D0CDE1"
-                />
-                <path
-                  id="Vector_14"
-                  d="M91.45 639.223V673.223H125.45V639.223H91.45ZM123.97 671.743H92.92V640.703H123.97V671.743Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_15"
-                  d="M756.446 661.223H728.446V689.223H756.446V661.223Z"
-                  fill="#D0CDE1"
-                />
-                <path
-                  id="Vector_16"
-                  d="M739.45 639.223V673.223H773.45V639.223H739.45ZM771.97 671.743H740.92V640.703H771.97V671.743Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_17"
-                  d="M94.5801 230.113C138.399 230.113 173.921 194.591 173.921 150.773C173.921 106.954 138.399 71.4324 94.5801 71.4324C50.7616 71.4324 15.2396 106.954 15.2396 150.773C15.2396 194.591 50.7616 230.113 94.5801 230.113Z"
-                  fill="#6C63FF"
-                />
-                <path
-                  id="Vector_18"
-                  d="M122.229 56.49C115.045 55.5764 107.775 55.5764 100.591 56.49C84.5863 58.5914 69.5206 65.2399 57.1812 75.6466C44.8419 86.0533 35.747 99.7814 30.9756 115.202C28.8056 122.229 27.5767 129.514 27.3211 136.864C27.2851 137.886 27.261 138.92 27.261 139.954C27.2833 162.265 36.1561 183.655 51.9323 199.431C67.7084 215.208 89.0991 224.08 111.41 224.103C113.201 224.103 114.992 224.043 116.759 223.934C120.908 223.674 125.03 223.103 129.093 222.227C148.495 218.055 165.798 207.161 177.947 191.468C190.096 175.776 196.308 156.295 195.487 136.467C194.666 116.638 186.864 97.7381 173.459 83.104C160.054 68.4699 141.909 59.0436 122.229 56.49H122.229ZM137.748 217.347H137.736C130.959 219.659 123.905 221.062 116.759 221.518C114.992 221.638 113.201 221.698 111.41 221.698C89.7379 221.672 68.9613 213.051 53.6369 197.727C38.3126 182.402 29.6917 161.626 29.6652 139.954C29.6652 138.92 29.6892 137.886 29.7253 136.864C30.5517 115.744 39.5159 95.7617 54.7414 81.1009C69.9669 66.4401 90.2733 58.2371 111.41 58.209C130.776 58.2101 149.513 65.0866 164.283 77.6132C179.052 90.1399 188.895 107.503 192.057 126.61C195.22 145.716 191.496 165.325 181.55 181.942C171.604 198.559 156.082 211.106 137.748 217.347H137.748Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_19"
-                  d="M112.612 63.0175H110.208V79.8473H112.612V63.0175Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_20"
-                  d="M57.8578 84.7016L56.1577 86.4017L68.0582 98.3021L69.7582 96.6021L57.8578 84.7016Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_21"
-                  d="M34.4738 138.752V141.156H51.3035V138.752H34.4738Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_22"
-                  d="M56.1577 193.506L57.8578 195.206L69.7582 183.305L68.0582 181.605L56.1577 193.506Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_23"
-                  d="M153.061 96.602L154.762 98.3021L166.662 86.4016L164.962 84.7016L153.061 96.602Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_24"
-                  d="M171.516 138.752V141.156H188.346V138.752H171.516Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_25"
-                  d="M154.762 181.605L153.061 183.305L164.962 195.206L166.662 193.506L154.762 181.605Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_26"
-                  d="M112.612 200.06H110.208V216.89H112.612V200.06Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_27"
-                  d="M122.229 35.3686H100.591V57.0069H122.229V35.3686Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_28"
-                  d="M111.41 38.975C127.344 38.975 140.261 34.4002 140.261 28.7569C140.261 23.1136 127.344 18.5388 111.41 18.5388C95.4759 18.5388 82.5588 23.1136 82.5588 28.7569C82.5588 34.4002 95.4759 38.975 111.41 38.975Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_29"
-                  d="M226 220.44H0V222.844H226V220.44Z"
-                  fill="#3F3D56"
-                />
-              </g>
-              <g id="clock">
-                <path
-                  id="Vector_30"
-                  d="M115.016 94.2729H107.803V135.145H115.016V94.2729Z"
-                  fill="#3F3D56"
-                />
-                <path
-                  id="Vector_31"
-                  d="M115.016 135.145C113.976 134.365 112.71 133.943 111.41 133.943C110.109 133.943 108.844 134.365 107.803 135.145C107.091 135.686 106.505 136.375 106.084 137.165C105.552 138.181 105.322 139.329 105.421 140.473C105.52 141.616 105.944 142.707 106.643 143.617C107.343 144.527 108.288 145.218 109.368 145.608C110.447 145.998 111.616 146.07 112.735 145.817C113.855 145.564 114.878 144.996 115.685 144.179C116.492 143.363 117.048 142.333 117.288 141.211C117.528 140.088 117.441 138.921 117.039 137.846C116.636 136.771 115.934 135.834 115.016 135.145H115.016ZM111.41 143.56C110.454 143.557 109.539 143.176 108.863 142.501C108.187 141.825 107.806 140.909 107.803 139.954C107.808 139.224 108.03 138.513 108.441 137.91C108.793 137.4 109.271 136.989 109.828 136.718C110.385 136.447 111.003 136.324 111.622 136.361C112.241 136.398 112.84 136.595 113.361 136.931C113.881 137.267 114.306 137.732 114.595 138.281C114.883 138.83 115.025 139.444 115.007 140.063C114.988 140.683 114.811 141.288 114.49 141.818C114.17 142.349 113.718 142.788 113.179 143.093C112.639 143.399 112.03 143.559 111.41 143.56V143.56Z"
-                  fill="#3F3D56"
-                />
-              </g>
-              <g id="leftTree">
-                <path
-                  id="Vector_32"
-                  d="M150.594 599.754C151.527 631.704 132.859 643.413 109.43 644.097C108.886 644.113 108.345 644.123 107.805 644.126C106.719 644.135 105.643 644.117 104.577 644.072C83.3891 643.193 66.6173 631.945 65.7495 602.232C64.8515 571.482 103.018 531.529 105.882 528.574L105.887 528.571C105.996 528.458 106.052 528.402 106.052 528.402C106.052 528.402 149.661 567.807 150.594 599.754Z"
-                  fill="#D0CDE1"
-                />
-                <path
-                  id="Vector_33"
-                  d="M107.744 639.255L122.626 617.124L107.774 641.636L107.805 644.126C106.719 644.135 105.643 644.117 104.577 644.072L105.316 612.06L105.295 611.813L105.323 611.766L105.393 608.741L89.0953 585.078L105.374 606.477L105.432 607.116L105.989 582.93L91.9123 558.397L106.029 578.681L105.882 528.574L105.882 528.407L105.887 528.571L106.822 568.062L119.651 552.021L106.864 571.464L107.144 593.098L118.949 571.984L107.187 596.279L107.343 608.309L124.512 578.897L107.395 612.505L107.744 639.255Z"
-                  fill="#3F3D56"
-                />
-              </g>
-              <g id="righTree">
-                <path
-                  id="Vector_34"
-                  d="M798.594 599.754C799.527 631.704 780.859 643.413 757.43 644.097C756.886 644.113 756.345 644.123 755.805 644.126C754.719 644.135 753.643 644.117 752.577 644.072C731.389 643.193 714.617 631.945 713.75 602.232C712.852 571.482 751.018 531.529 753.882 528.574L753.887 528.571C753.996 528.458 754.052 528.402 754.052 528.402C754.052 528.402 797.661 567.807 798.594 599.754Z"
-                  fill="#D0CDE1"
-                />
-                <path
-                  id="Vector_35"
-                  d="M755.744 639.255L770.626 617.124L755.774 641.636L755.805 644.126C754.719 644.135 753.643 644.117 752.577 644.072L753.316 612.06L753.295 611.813L753.323 611.766L753.393 608.741L737.095 585.078L753.374 606.477L753.432 607.116L753.989 582.93L739.912 558.397L754.029 578.681L753.882 528.574L753.882 528.407L753.887 528.571L754.822 568.062L767.651 552.021L754.864 571.464L755.144 593.098L766.949 571.984L755.187 596.279L755.343 608.309L772.512 578.897L755.395 612.505L755.744 639.255Z"
-                  fill="#3F3D56"
-                />
-              </g>
-              <g id="pc-circle">
-                <path
-                  id="Vector_36"
-                  d="M422.5 512.326C436.307 512.326 447.5 501.133 447.5 487.326C447.5 473.519 436.307 462.326 422.5 462.326C408.693 462.326 397.5 473.519 397.5 487.326C397.5 501.133 408.693 512.326 422.5 512.326Z"
-                  fill="#3F3D56"
-                />
-              </g>
-            </g>
-            <defs>
-              <clipPath id="clip0">
-                <rect width="833.5" height="689.223" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
-        </div>
-      </div>
-     
-    </div>
-      <footer class="footer">
-        <div class="container text-center">
-          <span>your-website-name.com</span>
-        </div>
-      </footer>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
-  </body>
 </html>
